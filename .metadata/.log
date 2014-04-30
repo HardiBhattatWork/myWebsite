@@ -42,3 +42,89 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2014-04-30 19:21:22.524
+!MESSAGE JSDT AbstractIndexer attempted to index a field with no name, this should never happen.
+typeName: String
+declaringType: ___anonymous_types
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2014-04-30 19:21:28.781
+!MESSAGE JSDT AbstractIndexer attempted to index a field with no name, this should never happen.
+typeName: String
+declaringType: ___anonymous_types
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2014-04-30 19:23:03.854
+!MESSAGE JSDT AbstractIndexer attempted to index a field with no name, this should never happen.
+typeName: String
+declaringType: ___anonymous_types
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2014-04-30 19:23:09.936
+!MESSAGE JSDT AbstractIndexer attempted to index a field with no name, this should never happen.
+typeName: String
+declaringType: ___anonymous_types
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2014-04-30 19:24:47.642
+!MESSAGE JSDT AbstractIndexer attempted to index a field with no name, this should never happen.
+typeName: String
+declaringType: ___anonymous_types
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2014-04-30 19:24:54.119
+!MESSAGE JSDT AbstractIndexer attempted to index a field with no name, this should never happen.
+typeName: String
+declaringType: ___anonymous_types
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2014-04-30 19:26:06.904
+!MESSAGE JSDT AbstractIndexer attempted to index a field with no name, this should never happen.
+typeName: String
+declaringType: ___anonymous_types
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2014-04-30 19:26:07.829
+!MESSAGE JSDT AbstractIndexer attempted to index a field with no name, this should never happen.
+typeName: String
+declaringType: ___anonymous_types
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2014-04-30 19:26:21.022
+!MESSAGE JSDT AbstractIndexer attempted to index a field with no name, this should never happen.
+typeName: String
+declaringType: ___anonymous_types
+
+!ENTRY org.eclipse.wst.jsdt.core 2 2 2014-04-30 19:26:21.177
+!MESSAGE JSDT AbstractIndexer attempted to index a field with no name, this should never happen.
+typeName: String
+declaringType: ___anonymous_types
+
+!ENTRY org.eclipse.core.jobs 4 2 2014-04-30 19:28:41.933
+!MESSAGE An internal error occurred during: "Building workspace".
+!STACK 0
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+	at org.eclipse.wst.jsdt.internal.compiler.parser.Parser.isErrorState(Parser.java:5557)
+	at org.eclipse.wst.jsdt.internal.compiler.parser.Parser.parse(Parser.java:5687)
+	at org.eclipse.wst.jsdt.internal.compiler.parser.Parser.parse(Parser.java:6044)
+	at org.eclipse.wst.jsdt.internal.compiler.parser.Parser.parse(Parser.java:5996)
+	at org.eclipse.wst.jsdt.internal.compiler.parser.Parser.dietParse(Parser.java:4601)
+	at org.eclipse.wst.jsdt.internal.compiler.Compiler.accept(Compiler.java:743)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.addUnitsContainingBindings(LookupEnvironment.java:184)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.CompilationUnitScope.buildTypeBindings(CompilationUnitScope.java:417)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.buildTypeBindings(LookupEnvironment.java:343)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.buildTypeBindings(LookupEnvironment.java:331)
+	at org.eclipse.wst.jsdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:584)
+	at org.eclipse.wst.jsdt.internal.compiler.Compiler.beginToCompile(Compiler.java:339)
+	at org.eclipse.wst.jsdt.internal.compiler.Compiler.compile(Compiler.java:352)
+	at org.eclipse.wst.jsdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:288)
+	at org.eclipse.wst.jsdt.internal.core.builder.IncrementalImageBuilder.compile(IncrementalImageBuilder.java:303)
+	at org.eclipse.wst.jsdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:254)
+	at org.eclipse.wst.jsdt.internal.core.builder.IncrementalImageBuilder.build(IncrementalImageBuilder.java:134)
+	at org.eclipse.wst.jsdt.internal.core.builder.JavaBuilder.buildDeltas(JavaBuilder.java:302)
+	at org.eclipse.wst.jsdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:214)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
