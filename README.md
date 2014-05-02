@@ -6,7 +6,7 @@
 
 To download Node, go to [nodejs.org](http://nodejs.org/), click "Download", and click “Windows Installer”. This will give you a Windows Installer (MSI) file that will install Node and npm.
 
-![image alt text](image_0.png)
+![image alt text](images/image_0.png)
 
 Running the Windows installer will show a wizard, it’s pretty easy to follow. It’s just like installing any other Windows program – the Node binaries will end up in **C:\Program Files (x86)\nodejs\**, and will be accessible from **cmd.exe**.
 
