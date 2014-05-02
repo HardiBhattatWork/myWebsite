@@ -6,11 +6,11 @@
 
 To download Node, go to [nodejs.org](http://nodejs.org/), click "Download", and click “Windows Installer”. This will give you a Windows Installer (MSI) file that will install Node and npm.
 
-![image alt text](image_0.png)
+![image alt text](img\image_0.png)
 
 Running the Windows installer will show a wizard, it’s pretty easy to follow. It’s just like installing any other Windows program – the Node binaries will end up in **C:\Program Files (x86)\nodejs\**, and will be accessible from **cmd.exe**.
 
-![image alt text](image_1.png)
+![image alt text](img\image_1.png)
 
 # **Setup Eclipse for AngularJS and GIT**
 
@@ -32,7 +32,7 @@ To install AngularJS Eclipse, please read [Installation - Update Site](https://g
 
 When you will use AngularJS Eclipse update site you will see that:
 
-![image alt text](image_2.png)
+![image alt text](img\image_2.png)
 
 You must select:
 
@@ -50,7 +50,7 @@ You must select:
 
 Before using AngularJS Eclipse features ([HTML features](https://github.com/angelozerr/angularjs-eclipse/wiki/HTML-Features) and [Javascript features](https://github.com/angelozerr/angularjs-eclipse/wiki/Javascript-Features)) you must convert your project to AngularJS Project :
 
-![image alt text](image_3.png)
+![image alt text](img\image_3.png)
 
             1. **_[HTML Feature_**s](https://github.com/angelozerr/angularjs-eclipse/wiki/HTML-Features)
 
@@ -58,13 +58,13 @@ Before using AngularJS Eclipse features ([HTML features](https://github.com/ange
 
 Highlight AngularJS directive and EL:
 
-![image alt text](image_4.png)
+![image alt text](img\image_4.png)
 
             3. **_Directive management_**
 
 Completion for directive name :
 
-![image alt text](image_5.png)
+![image alt text](img\image_5.png)
 
 You can configure directives syntax in order to that completion shows you the well directive names (ng-, ng_, etc).
 
@@ -72,19 +72,19 @@ You can configure directives syntax in order to that completion shows you the we
 
 In HTML editor, directives completion provides directive names with the ng-* syntax :
 
-![image alt text](image_6.png)
+![image alt text](img\image_6.png)
 
 Angular supports several syntax like starting with 'x-', 'data-' and use ':', '-', '_' delimiters. You can customize the syntax that you wish for completion with the project properties. By default you will see this configuration :
 
-![image alt text](image_7.png)
+![image alt text](img\image_7.png)
 
 You can select other starts with and delimiters. You can see in the textarea the directive names that completion will show :
 
-![image alt text](image_8.png)
+![image alt text](img\image_8.png)
 
 After validating your configuration, completion will show you directive names with other syntaxes :
 
-![image alt text](image_9.png)
+![image alt text](img\image_9.png)
 
                 2. Completion by tags
 
@@ -96,13 +96,13 @@ Angular defines 4 restricts :
 
 * A : the directive is available for attribute.
 
-![image alt text](image_10.png)
+![image alt text](img\image_10.png)
 
 * C : the directive is available for class attribute value.
 
 * E : the directive is available for element.
 
-![image alt text](image_11.png)
+![image alt text](img\image_11.png)
 
 * M : the directive is available for comment.
 
@@ -110,33 +110,33 @@ Angular defines 4 restricts :
 
 Some directive have parameters. A good sample is the [ngPluralize](http://docs.angularjs.org/api/ng.directive:ngPluralize) directive which defines required parameters like 'count', 'when' and optional 'offset' parameter:
 
-![image alt text](image_12.png)
+![image alt text](img\image_12.png)
 
 If you open completion inside HTML element, you will see ngPluralize :
 
-![image alt text](image_13.png)
+![image alt text](img\image_13.png)
 
 When you apply the completion on ngPluralize, 'count' and 'when' attribute are generated because there are required :
 
-![image alt text](image_14.png)
+![image alt text](img\image_14.png)
 
 Directive parameters are highlighted with a light blue color.
 
 If you open completion inside the HTML element, you can see 'offset' directive parameter :
 
-![image alt text](image_15.png)
+![image alt text](img\image_15.png)
 
 ngPluralize can be used as element (restrict=EA), you can benefit too with completion for HTML element.
 
-![image alt text](image_16.png)
+![image alt text](img\image_16.png)
 
 When you apply the completion on ngPluralize, 'count' and 'when' attribute are generated because there are required :
 
-![image alt text](image_17.png)
+![image alt text](img\image_17.png)
 
             4. **_Hover_**
 
-![image alt text](image_18.png)
+![image alt text](img\image_18.png)
 
             5. **_Custom Directive_**
 
@@ -144,13 +144,13 @@ When you apply the completion on ngPluralize, 'count' and 'when' attribute are g
 
 Completion for custom directive name :
 
-![image alt text](image_19.png)
+![image alt text](img\image_19.png)
 
                 6. Hyperlink
 
 Hyperlink for custom directive name :
 
-![image alt text](image_20.png)
+![image alt text](img\image_20.png)
 
             6. **_[Tern Eclipse IDE - Node.j_**s](https://github.com/angelozerr/tern.java/wiki/Tern-Eclipse-IDE-Node.js)
 
@@ -160,7 +160,7 @@ To execute Tern (written in Javascript) it is recommanded to execute it with Nod
 
 Open Preferences with the menu Windows/Preferences and select Tern node tree :
 
-![image alt text](image_21.png)
+![image alt text](img\image_21.png)
 
                 8. Configure Node.js
 
@@ -170,7 +170,7 @@ After selecting Tern with node.js, you must configure the node.js runtime proces
 
 If you have [installed node.js](http://nodejs.org/), select "Native Node.js" :
 
-![image alt text](image_22.png)
+![image alt text](img\image_22.png)
 
 IMPORTANT : if you have installed node.js, please restart your computer before using the Tern Eclipse IDE.
 
@@ -178,7 +178,7 @@ IMPORTANT : if you have installed node.js, please restart your computer before u
 
 If you have not installed node.js, you can select according your OS, (if it's available) the embed node.js install :
 
-![image alt text](image_23.png)
+![image alt text](img\image_23.png)
 
             7. **_Module management_**
 
@@ -186,17 +186,17 @@ For module management, you need to configure tern server.
 
                 11. Hyperlink
 
-![image alt text](image_24.png)
+![image alt text](img\image_24.png)
 
                 12. Hover
 
-![image alt text](image_25.png)
+![image alt text](img\image_25.png)
 
                 13. Completions
 
 Completion for modules (declared in an external JS) :
 
-![image alt text](image_26.png)
+![image alt text](img\image_26.png)
 
             8. **_Controller management_**
 
@@ -206,15 +206,15 @@ For controller management, you need to configure tern server.
 
 Completion for controllers (declared in an external JS) :
 
-![image alt text](image_27.png)
+![image alt text](img\image_27.png)
 
                 15. Hover
 
-![image alt text](image_28.png)
+![image alt text](img\image_28.png)
 
                 16. Hyperlink
 
-![image alt text](image_29.png)
+![image alt text](img\image_29.png)
 
             9. **_Angular Expression management_**
 
@@ -224,27 +224,27 @@ For angular expression management, you need to configure tern server.
 
 Completion for angular expression :
 
-![image alt text](image_30.png)
+![image alt text](img\image_30.png)
 
             10. **_Typing_**
 
                 18. Auto close EL
 
-![image alt text](image_31.png) ![image alt text](image_32.png)
+![image alt text](img\image_31.png) ![image alt text](img\image_32.png)
 
                 19. Validation
 
 Imagine you have this valid HTML Angular file (module and controller exists) :
 
-![image alt text](image_33.png)
+![image alt text](img\image_33.png)
 
 If you fill ng-app with bad module, you will see this validation error :
 
-![image alt text](image_34.png)
+![image alt text](img\image_34.png)
 
 If you fill ng-app with existing module, but a controller which doesn't exists, you will see this validation error :
 
-![image alt text](image_35.png)
+![image alt text](img\image_35.png)
 
         3. **[Javascript Feature**s](https://github.com/angelozerr/angularjs-eclipse/wiki/Javascript-Features)
 
@@ -260,35 +260,35 @@ Note : it should be possible to extend other Javascript editor with tern by deve
 
 Completion on angular variable :
 
-![image alt text](image_36.png)
+![image alt text](img\image_36.png)
 
 Completion on angular module :
 
-![image alt text](image_37.png)
+![image alt text](img\image_37.png)
 
 Completion on angular elements like $http :
 
-![image alt text](image_38.png)
+![image alt text](img\image_38.png)
 
 Completion on injected service :
 
-![image alt text](image_39.png)
+![image alt text](img\image_39.png)
 
                 21. Javascript
 
 Completion on javascript elements like array :
 
-![image alt text](image_40.png)
+![image alt text](img\image_40.png)
 
             13. **_Hyperlink_**
 
 Ctrl+Click on any javascript elements (variable, function) open hyperlink :
 
-![image alt text](image_41.png)
+![image alt text](img\image_41.png)
 
 If you select "Tern - Go to definition", tern is used to search and select the javascript definition:
 
-![image alt text](image_42.png)
+![image alt text](img\image_42.png)
 
 It works too if your variable, functions is defined on other files (if script path is well configured).
 
@@ -306,7 +306,7 @@ AngularJS Eclipse is based on the javascript inference engine tern.js is written
 
 * use your installed node.js. For that, you must select the "Native node" install type and select the well node file :
 
-![image alt text](image_43.png)
+![image alt text](img\image_43.png)
 
 when the native node is selected, it searches node binary in default folders installation (ex : "C:\Program Files\nodejs\node.exe" for Windows) and if it doesn't find, it searches in your node in your "PATH" environment.
 
@@ -314,7 +314,7 @@ If you wish to [download and install node.js](#heading=h.gjdgxs)[,](#heading=h.g
 
 * use an embed node. For that you must install the well embed node.js according your OS :
 
-![image alt text](image_44.png)
+![image alt text](img\image_44.png)
 
             15. **_Project preferences_**
 
@@ -324,7 +324,7 @@ This section is about "project properties" dialog which is available if you sele
 
 tern.js provides several [Tern Plugin](http://ternjs.net/doc/manual.html#plugins). Check that angular plugin is checked
 
-![image alt text](image_45.png)
+![image alt text](img\image_45.png)
 
 The angular plugin gives you the capability to retrieve module, controllers,(custom) directives, etc from your javascript, manages completion hyperlink, hover, validation in HTML and Javascript editor. It's enable to emulate the angular injection on your $scope, $http, etc.
 
@@ -332,37 +332,37 @@ The angular plugin gives you the capability to retrieve module, controllers,(cus
 
 tern.js provides several [JSON Type definition](http://ternjs.net/doc/manual.html#typedef). If you wish to benefit with completion about browser model (ex: document.get...), select it. It provides too an ecma5, jquery definition. For angular, the definition is inside the angular plugin.
 
-![image alt text](image_46.png)
+![image alt text](img\image_46.png)
 
                 25. Scripts path
 
 When tern is used for completion, validation, hover, hyperlink, it must load before (just the first time) a list of your Javascript. To do that you must configure your script paths by selecting your js folder which contains your javascripts (it's the same thing than for Java build path) :
 
-![image alt text](image_47.png)
+![image alt text](img\image_47.png)
 
                 26. Customize Directives syntax
 
 In HTML editor, directives completion provides directive names with the ng-* syntax :
 
-![image alt text](image_48.png)
+![image alt text](img\image_48.png)
 
 Angular supports several syntax like starting with 'x-', 'data-' and use ':', '-', '_' delimiters. You can customize the syntax that you wish for completion with the project properties. By default you will see this configuration :
 
-![image alt text](image_49.png)
+![image alt text](img\image_49.png)
 
 After validating your configuration, completion will show you directive names with other syntaxes :
 
-![image alt text](image_50.png)
+![image alt text](img\image_50.png)
 
                 27. Validation
 
 If you validate with "Validate" menu contextual menu :
 
-![image alt text](image_51.png)
+![image alt text](img\image_51.png)
 
 you will see that AngularJS directives will have warn messages :
 
-![image alt text](image_52.png)
+![image alt text](img\image_52.png)
 
 In this sample you have 2 warnings messages :
 
@@ -372,11 +372,11 @@ In this sample you have 2 warnings messages :
 
 You could disable the warning message for unknown attribute, but AngularJS Eclipse provides the "HTML Angular Syntax Validator" which is an extension of the "HTML Syntax Validator" to support Angular directives. To use this Angular validator, you must enable it and disable "HTML Syntax Validator":
 
-![image alt text](image_53.png)
+![image alt text](img\image_53.png)
 
 If you revalidate you will see that directive are not marked as warning and other unknown attributes are marked as warning:
 
-![image alt text](image_54.png)
+![image alt text](img\image_54.png)
 
         5. **Let's go!**
 
@@ -386,13 +386,13 @@ At this step we have finished to configure AngularJS Eclipse, now it's time to c
 
 Open an HTML file by using **Open with/AngularJS Editor:**
 
-![image alt text](image_55.png)
+![image alt text](img\image_55.png)
 
 If you open your HTML file without this editor, you will have not angular syntax coloration, but completion, hyperlink should working.
 
 Try completion on ng-app to open your module:
 
-![image alt text](image_56.png)
+![image alt text](img\image_56.png)
 
 This feature is managed by tern, if it doesn't work, see [Troubleshooting](#heading=h.3znysh7)[ ](#heading=h.3znysh7)section.
 
@@ -400,7 +400,7 @@ This feature is managed by tern, if it doesn't work, see [Troubleshooting](#head
 
 Open a javascript editor and try to open completion for angular model:
 
-![image alt text](image_57.png)
+![image alt text](img\image_57.png)
 
 This feature is managed by tern, if it doesn't work, see [Troubleshooting](#heading=h.3znysh7)[ ](#heading=h.3znysh7)section.
 
@@ -414,7 +414,7 @@ If you have checked your configuration and completion doesn't work for HTML and 
 
             17. **_Error log view_**
 
-![image alt text](image_58.png)
+![image alt text](img\image_58.png)
 
             18. **_Tern console_**
 
@@ -422,35 +422,35 @@ You can trace the start of node.js server and the request/response of the tern s
 
 To do that, you must active the tern console for your project:
 
-![image alt text](image_59.png)
+![image alt text](img\image_59.png)
 
 and open the tern console:
 
-![image alt text](image_60.png)
+![image alt text](img\image_60.png)
 
 If you retry to execute completion for instance to use tern server, you will see the node.js command and the error in the console:
 
-![image alt text](image_61.png)
+![image alt text](img\image_61.png)
 
 When you have no problem, you can see the JSON request/response of the tern server when it is use it:
 
-![image alt text](image_62.png)
+![image alt text](img\image_62.png)
 
         8. **[Angular Explore**r](https://github.com/angelozerr/angularjs-eclipse/wiki/Angular-Explorer-View)
 
 Angular Explorer View gives you the capability to display Angular elements like modules, controllers of your AngularJS application. To open it go to **Window/Show View** and select **Angular Explorer:**
 
-![image alt text](image_63.png)
+![image alt text](img\image_63.png)
 
 After that you can see your modules, controllers, etc:
 
-![image alt text](image_64.png)
+![image alt text](img\image_64.png)
 
             19. **_Angular Explorer View_**
 
 Angular Explorer View gives you the capability to display Angular elements like modules, controllers of your AngularJS application:
 
-![image alt text](image_65.png)
+![image alt text](img\image_65.png)
 
 This view is useful for :
 
@@ -464,11 +464,11 @@ This view is useful for :
 
 To use Angular Explorer View, you must defines the whole Javascripts files which must be used to load with Tern the Angular modules, controllers. To do that you must configure Script path. Here a screenshot where script path was configured with an HTML file which defines "script" elements by using "Add File" button:
 
-![image alt text](image_66.png)
+![image alt text](img\image_66.png)
 
 You can define a folder with "Add Folder" which contains the Javascript files to load. This configuration is used when your scripts to load are not declared in script element (or if script/@src cannot be resolved if you use for instance JSP EL contextPath).
 
-![image alt text](image_67.png)
+![image alt text](img\image_67.png)
 
             21. **_Use the Angular Explorer view?_**
 
@@ -476,21 +476,21 @@ You can define a folder with "Add Folder" which contains the Javascript files to
 
 The "Go To Definition" contextual menu gives the capability to open the JS editor and select the module, controller selected (you can do that too with double click):
 
-![image alt text](image_68.png)
+![image alt text](img\image_68.png)
 
                 30. HTML Template (Link/Unlink)
 
 No completion: 
 
-![image alt text](image_69.png)
+![image alt text](img\image_69.png)
 
 To resolve this problem, you can link the HTML file to a controller with "Link to controller" menu action:
 
-![image alt text](image_70.png)
+![image alt text](img\image_70.png)
 
 If you reopen completion, you will see completion :
 
-![image alt text](image_71.png)
+![image alt text](img\image_71.png)
 
 # **Setup Github**
 
