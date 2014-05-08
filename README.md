@@ -502,7 +502,7 @@ If you’re starting to track an existing project in Git, you need to go to the 
 
 `$ git init`
 
-This creates a new subdirectory named **`.gi**t` that contains all of your necessary repository files — a Git repository skeleton. At this point, nothing in your project is tracked yet. (See Chapter 9 for more information about exactly what files are contained in the **`.gi**t` directory you just created.)
+This creates a new subdirectory named **`.git` that contains all of your necessary repository files — a Git repository skeleton. At this point, nothing in your project is tracked yet. (See Chapter 9 for more information about exactly what files are contained in the **`.git` directory you just created.)
 
 If you want to start version-controlling existing files (as opposed to an empty directory), you should probably begin tracking those files and do an initial commit. You can accomplish that with a few git add commands that specify the files you want to track, followed by a commit:
 
@@ -520,11 +520,11 @@ If you want to get a copy of an existing Git repository — for example, a proje
 
 You clone a repository with `git clone [url]`. For example, if you want to clone the Ruby Git library called Grit, you can do so like this:
 
-`$ git clone git://github.com/schacon/grit.git`
+`$ git clone git://github.com/HardiBhattatWork/myWebsite.git`
 
 That creates a directory named `grit`, initializes a .`git` directory inside it, pulls down all the data for that repository, and checks out a working copy of the latest version. If you go into the new grit directory, you’ll see the project files in there, ready to be worked on or used. If you want to clone the repository into a directory named something other than `grit`, you can specify that as the next command-line option:
 
-`$ git clone git://github.com/schacon/grit.git mygrit`
+`$ git clone git://github.com/HardiBhattatWork/myWebsite.git myDirectory` 
 
 That command does the same thing as the previous one, but the target directory is called `mygrit`
 
