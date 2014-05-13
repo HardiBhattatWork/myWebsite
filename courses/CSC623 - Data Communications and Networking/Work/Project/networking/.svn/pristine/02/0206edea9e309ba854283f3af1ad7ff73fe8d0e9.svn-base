@@ -1,0 +1,34 @@
+package ftp.gui;
+
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import ftp.config.*;
+
+public class UploadButton extends JButton implements CommandInterface, Settings {
+
+	@Override
+	public void processEvent(FileTable localList, FileTable remoteList,
+			JTextField locText, JTextField remText) {
+		try {
+			System.out.println(localList);
+			int indexRow = localList.getSelectedRow();
+
+			localList.getValueAt(indexRow, 0);
+			System.out.println(locText.getText() + WIN_SEPARATOR
+					+ localList.getValueAt(indexRow, 1));
+			// String selectedItem = localList.getSelectedValue().toString();
+			// ((DefaultListModel) localList.getModel()).remove(index);
+			//
+			// ((DefaultListModel)
+			// remoteList.getModel()).addElement(selectedItem);
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Please select a directory ");
+		}
+	}
+
+	public UploadButton(ImageIcon imageIcon) {
+		super(imageIcon);
+	}
+}

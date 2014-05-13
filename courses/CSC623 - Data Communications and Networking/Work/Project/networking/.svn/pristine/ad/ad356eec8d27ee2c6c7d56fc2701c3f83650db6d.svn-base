@@ -1,0 +1,103 @@
+/**
+ * This class is used to start a thread and handle
+ * ftp client requests
+ * @author: Yikuan Zheng
+ **/
+package ftp.server;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import ftp.io.CmdSocketWriter;
+
+public class ServerWorker extends Thread {
+
+	private static ArrayList<String> commands = null;
+
+	static {
+		commands = new ArrayList<String>();
+		commands.add("user");
+		commands.add("pass");
+		commands.add("pwd");
+		commands.add("cwd");
+		commands.add("list");
+
+	}
+
+	private Socket socket = null;
+	private BufferedReader in = null;
+	private CmdSocketWriter out = null;
+	private HashMap<String, Method> methods;
+
+	public ServerWorker(Socket s) throws IOException {
+		socket = s;
+
+		try {
+			in = new BufferedReader(new InputStreamReader(socket
+					.getInputStream()));
+			out = new CmdSocketWriter(new PrintWriter(socket.getOutputStream(),
+					true));
+			out.write("220 Welcome!");
+		} catch (IOException ioe) {
+			throw ioe;
+		}
+
+		methods = new HashMap<String, Method>();
+		Method[] m = CmdHandler.class.getDeclaredMethods();
+		String methodName = null;
+
+		for (int i = 0; i < m.length; i++) {
+			methodName = m[i].getName();
+
+			if (commands.contains(methodName)) {
+				methods.put(methodName, m[i]);
+			}
+		}
+
+		this.start();
+	}
+
+	public void run() {
+		try {
+			String line = null;
+			CmdHandler handler = new CmdHandler(out, socket.getInetAddress());
+
+			while ((line = in.readLine()) != null) {
+
+				int index = line.indexOf(' ');
+
+				if (index == -1) {
+					index = line.length();
+				}
+				String command = line.substring(0, index).toLowerCase();
+				Method o = (Method) methods.get(command);
+
+				if (o != null) {
+
+					try {
+						o.invoke(handler, line);
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						e.printStackTrace();
+					}
+
+				} else {
+					out.write("501 Syntax error");
+				}
+			}
+		} catch (IOException ioe) {
+			System.out.println("Socket error: " + ioe);
+		}
+	}
+
+}

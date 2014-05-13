@@ -1,0 +1,190 @@
+/**
+ * Description: Class for a table model that stores the data 
+ * for local and remote file system.
+ * @author Jing Zhao
+ **/
+package ftp.gui.component;
+
+import java.io.File;
+import java.sql.Timestamp;
+
+import javax.swing.ImageIcon;
+import javax.swing.table.AbstractTableModel;
+
+import ftp.config.Settings;
+import ftp.file.FtpFile;
+
+public class FileTableModel extends AbstractTableModel implements Settings{
+
+	private String[] columns;
+	private Object[][] data;
+	private int row;
+
+	/**
+	 * set row constructor
+	 * @param row
+	 */
+	public void setRow(int row) {
+		this.row = row;
+		data = new Object[row][columns.length];
+	}
+
+	/**
+	 * Constructor to generate the row and column and populate the data
+	 * @param row
+	 * @param columns
+	 */
+	public FileTableModel(int row, String[] columns) {
+		this.row = row;
+		this.columns = columns;
+		data = new Object[row][columns.length];
+	}
+
+	/**
+	 * constructor with given data and columns
+	 * @param data
+	 * @param columns
+	 */
+	public FileTableModel(Object[][] data, String[] columns) {
+		if (data != null)
+			this.row = data.length;
+		this.columns = columns;
+		this.data = data;
+	}
+
+	/**
+	 * return the column length
+	 */
+	public int getColumnCount() {
+		return columns.length;
+	}
+
+	/**
+	 * return the row length
+	 */
+	public int getRowCount() {
+		if (data == null)
+			return 0;
+		return data.length;
+	}
+
+	/**
+	 * get Value at specified row and column
+	 */
+	public Object getValueAt(int row, int col) {
+		return data[row][col];
+	}
+
+	/**
+	 * get comumn name give the column
+	 */
+	public String getColumnName(int col) {
+		return columns[col];
+	}
+
+	public Class getColumnClass(int c) {
+		return getValueAt(0, c).getClass();
+	}
+
+	public void setValueAt(Object value, int row, int col) {
+		data[row][col] = value;
+	}
+	
+	public void resetTableModel(FtpFile[] children) {
+
+		if (children == null)
+			return;
+		// always has the row that represents the parent directory
+		setRow(children.length + 1);
+		setValueAt(new ImageIcon(DIR_IMG), 0, 0);
+		setValueAt("..", 0, 1);
+		setValueAt("", 0, 2);
+		setValueAt("", 0, 3);
+		setValueAt("", 0, 4);
+
+		Object[][] tableData = new Object[children.length][5];
+		for (int i = 0; i < children.length; i++) {
+			FtpFile child = children[i];
+			String fileName = child.getFileName();
+			if (child.isDirectory()) {
+				// image icon
+				tableData[i][0] = new ImageIcon(DIR_IMG);
+				// file size
+				tableData[i][2] = "";
+				// file type
+				tableData[i][3] = "folder";
+			} else {
+				// image icon
+				tableData[i][0] = new ImageIcon(FILE_IMG);
+				// file size
+				tableData[i][2] = child.getFileSize();
+				// file type
+				int suffix = child.getFileName().lastIndexOf(".");
+				String fileType = "";
+				if (suffix >= 0 && suffix < child.getFileSize())
+					fileType = fileName.substring(suffix + 1);
+				fileType += " file";
+				tableData[i][3] = fileType;
+			}
+			// file name
+			tableData[i][1] = fileName;
+			// last modification
+			tableData[i][4] = new Timestamp(children[i].getLastModify());
+
+			for (int j = 0; j < 5; j++) {
+				setValueAt(tableData[i][j], i + 1, j);
+			}
+		}
+	}
+
+
+
+	public void resetTableModel(File[] children) {
+
+		if (children == null)
+			return;
+		// always has the row that represents the parent directory
+		setRow(children.length + 1);
+		setValueAt(new ImageIcon(DIR_IMG), 0, 0);
+		setValueAt("..", 0, 1);
+		setValueAt("", 0, 2);
+		setValueAt("", 0, 3);
+		setValueAt("", 0, 4);
+
+		Object[][] tableData = new Object[children.length][5];
+		for (int i = 0; i < children.length; i++) {
+			File child = children[i];
+			String fileName = child.getName();
+			if (child.isDirectory()) {
+				// image icon
+				tableData[i][0] = new ImageIcon(DIR_IMG);
+				// file size
+				tableData[i][2] = "";
+				// file type
+				tableData[i][3] = "folder";
+			} else {
+				// image icon
+				tableData[i][0] = new ImageIcon(FILE_IMG);
+				// file size
+				tableData[i][2] = child.length();
+				// file type
+				int suffix = child.getName().lastIndexOf(".");
+				String fileType = "";
+				if (suffix >= 0 && suffix < child.length())
+					fileType = fileName.substring(suffix + 1);
+				fileType += " file";
+				tableData[i][3] = fileType;
+			}
+			// file name
+			tableData[i][1] = fileName;
+			// last modification
+			tableData[i][4] = new Timestamp(children[i].lastModified());
+
+			for (int j = 0; j < 5; j++) {
+				setValueAt(tableData[i][j], i + 1, j);
+			}
+		}
+	}
+
+}
+

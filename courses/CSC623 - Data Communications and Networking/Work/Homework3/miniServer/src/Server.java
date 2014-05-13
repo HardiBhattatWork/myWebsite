@@ -1,0 +1,153 @@
+//*** Server.java
+import java.util.*;
+import java.io.*;
+import java.net.*;
+import java.text.*;
+
+public class Server {
+	static ServerSocket ServSock;
+	static Socket Sock;
+	static PrintWriter PW;
+	static BufferedReader DIS;
+	static DateFormat dateFormat;
+	static Date date;
+
+	// ************************************
+	public static void printHeader(File file, String fileType, String strVer) {
+
+		Date lastModified = new Date(file.lastModified());
+		System.out.println(strVer + " 200 OK");
+		System.out.println("Server: "
+				+ Sock.getInetAddress().getHostName().toString());
+		System.out.println("Date: " + dateFormat.format(date));
+		System.out.println("Last-modified: " + lastModified);
+		System.out.println("Content-length: " + file.length());
+		System.out.println("Content-type: " + fileType);
+		System.out.println(".");
+		System.out.println();
+	}
+
+	// ************************************
+	public static void main(String args[]) throws IOException {
+		// *** establish server socket
+		ServSock = new ServerSocket(20000, 6); // *** port & queue length
+		Scanner scan = null;
+		System.out.println("Connected..\n");
+
+		// *** server runs forever until killed
+		while (true) {
+			// *** wait for the next client connection
+			Sock = ServSock.accept();
+			String fileName = "";
+			String thisFile = "";
+			String thisVer = "";
+			String fileType = "";
+			String strGET = "";
+			String respond = "";
+
+			dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			date = new Date();
+
+			// *** set up socket I/O streams
+			PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(
+					Sock.getOutputStream())), true);
+			DIS = new BufferedReader(new InputStreamReader(
+					Sock.getInputStream()));
+
+			// *** send server question
+			String R = DIS.readLine(); // *** THIS IS A BLOCKING CALL
+
+			StringTokenizer token = new StringTokenizer(R);
+
+			// strGET: holds the first token (GET).
+			strGET = token.nextElement().toString();
+
+			if (strGET.equals("GET")) {
+				// str: holds the second token which is the file name
+				// but it will contain '/' in it.
+				fileName = token.nextElement().toString();
+
+				// to omit the '/' from the beginning of the file name.
+				for (int i = 1; i < fileName.length(); i++)
+					thisFile += fileName.charAt(i);// holds the file name
+			}
+
+			String strVer = token.nextElement().toString();// holds HTTP version
+
+			// **If the file exists in the directory, read in the data
+			// **and save it in the variable 'respond' and
+			// **send it to the client. otherwise, print an error message.
+
+			try {
+
+				scan = new Scanner(new FileInputStream(thisFile));
+				InetAddress IA = InetAddress.getByName(args[0]);
+				// **test if it's HTML or HTM file
+				// **MIME type (text/html)
+				if (thisFile.endsWith(".html") || thisFile.endsWith(".htm")) {
+					fileType = "text/html";
+
+					while (scan.hasNext()) {
+						respond = scan.nextLine();
+
+						PW.println(respond);
+						File file = new File(thisFile);
+
+						printHeader(file, fileType, strVer);
+					}
+
+				}// end if
+					// **test if it's TXT file
+					// **MIME type (text/plain)
+				else if (thisFile.endsWith(".txt")) {
+					fileType = "text/plain";
+
+					while (scan.hasNext()) {
+						respond = scan.nextLine();
+
+						PW.println(respond);
+						File file = new File(thisFile);
+
+						printHeader(file, fileType, strVer);
+
+					}
+
+				}// end else if
+
+				// **test if it's JPG or GIF oR PNG file
+				// **MIME type (image/jpg)
+				else if (thisFile.endsWith("jpg") || thisFile.endsWith("gif")
+						|| thisFile.endsWith("png")) {
+					fileType = "image/jpg";// MIME Type
+					File file = new File(thisFile);
+					byte[] toByteArr = new byte[(int) file.length()];
+					// getting the file from directory
+					FileInputStream fileIS = new FileInputStream(file);
+					BufferedInputStream buffIS = new BufferedInputStream(fileIS);
+					// read the file as bits
+					buffIS.read(toByteArr, 0, toByteArr.length);
+					// put the file in the socket
+					OutputStream os = Sock.getOutputStream();
+					// send the the socket to the client
+					os.write(toByteArr, 0, toByteArr.length);
+
+					printHeader(file, fileType, strVer);
+				}// end else if
+
+			}// end try
+
+			catch (FileNotFoundException e) {
+				PW.println("Error.. File ( " + thisFile + " ) was not found");
+				System.out.println("Error.. File ( " + thisFile
+						+ " ) was not found");
+			}
+
+			PW.flush();
+
+			// *** close this socket connection but not the
+			// *** overall server connection
+			Sock.close();
+
+		}
+	}
+}

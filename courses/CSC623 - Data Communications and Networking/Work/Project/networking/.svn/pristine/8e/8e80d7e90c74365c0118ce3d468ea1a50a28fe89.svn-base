@@ -1,0 +1,198 @@
+/**
+ * This class is used to set up socket connection 
+ * with ftp server and complete the operations like
+ * change server's working directory, list files, download, upload ...
+ * @author Guojun Zhang
+ **/
+package ftp.client;
+
+import java.net.*;
+import java.util.ArrayList;
+import java.io.*;
+
+import ftp.config.Settings;
+import ftp.file.FtpFile;
+import ftp.message.FtpLogger;
+import ftp.message.JTextAreaOutput;
+
+public class FtpConnector implements Settings {
+
+	private JTextAreaOutput log = FtpLogger.getLog();
+
+	private String serverHostname;
+	private int port;
+	private String user;
+	private String pwd;
+	private Socket cmdSocket;
+	private PrintWriter cmdOut;
+	private BufferedReader cmdReader;
+	private FtpCmd cmd;
+	private SrvResponseAccepter rspAccepter;
+	private String srvResponse;
+	private PipedReader pipeIn;
+	private StringBuffer buffer;
+
+	public FtpConnector(String hostname, String user, String pwd)
+			throws UnknownHostException, IOException, InterruptedException {
+		this(hostname, CMDSOCKET_PORT, user, pwd);
+	}
+
+	public FtpConnector(String hostname, int port, String user, String pwd)
+			throws UnknownHostException, IOException, InterruptedException {
+
+		this.serverHostname = hostname;
+		this.port = port;
+		this.user = user;
+		this.pwd = pwd;
+		buffer = new StringBuffer();
+
+		// establish socket connection
+		cmdSocket = new Socket(serverHostname, port);
+		cmdOut = new PrintWriter(cmdSocket.getOutputStream(), true);
+		cmdReader = new BufferedReader(new InputStreamReader(cmdSocket
+				.getInputStream()));
+
+		// start a thread to accept the command response from ftp server
+		rspAccepter = new SrvResponseAccepter(cmdReader);
+		rspAccepter.start();
+
+		pipeIn = new PipedReader(rspAccepter.getPipeOut());
+		log();
+
+		cmd = new FtpCmd(cmdOut);
+
+	}
+
+	/*
+	 * returns command response getting from ftp server
+	 */
+	public String getSrvResponse() {
+		return srvResponse.toString();
+	}
+
+	/*
+	 * authenticates user and password with ftp server returns code that is
+	 * returned by the ftp server
+	 */
+	public int connect() throws InterruptedException {
+
+		// 220 Service ready for new user.
+		boolean userSent = false;
+		for (int i = 0; i < NUM_OF_TIMES && !userSent; i++) {
+			if (rspAccepter.getReplyCode() == 220) {
+				cmd.user(user);
+				log();
+				userSent = true;
+			}
+
+		}
+		// 331 User name okay, need password.
+		if (userSent) {
+			boolean pwdSent = false;
+			for (int i = 0; i < NUM_OF_TIMES && !pwdSent; i++) {
+				if (rspAccepter.getReplyCode() == 331) {
+					cmd.pass(pwd);
+					log();
+					pwdSent = true;
+				}
+
+			}
+			if (!pwdSent) {
+				log
+						.error("Failed to send command PASS. No response from server");
+			}
+		} else {
+			log.error("Failed to send command USER. No response from server");
+		}
+		return rspAccepter.getReplyCode();
+	}
+
+	/*
+	 * Gets the current working directory of server
+	 */
+	public String pwd(){
+		cmd.pwd();
+		log();
+		int startIndex = srvResponse.indexOf("/");
+		String path = srvResponse.substring(startIndex);
+
+		return path;
+	}
+
+	/*
+	 * lists the sub-directories and/or files under current working directory
+	 */
+	public FtpFile[] list() throws InterruptedException, IOException {
+		FtpFile[] files = null;
+		DataAccepter da = new DataAccepter(DIR_LIST);
+		da.start();
+		cmd.list();
+		Thread.sleep(1000);
+		log();
+			ArrayList<FtpFile> fileList = da.getFiles();
+			if (fileList != null) {
+				int size = fileList.size();
+				files = new FtpFile[size];
+				for (int i = 0; i < size; i++) {
+					files[i] = fileList.get(i);
+				}
+			}
+	
+		da.stopThread();
+
+		return files;
+	}
+
+	/*
+	 * changes the current working directory of server
+	 */
+	public boolean cwd(String newPath) throws InterruptedException {
+		cmd.cwd(newPath);
+		log();
+		// 250 current directory is changed to
+		return (rspAccepter.getReplyCode() == 250);
+
+	}
+
+	/*
+	 * upload files to ftp server
+	 */
+	public boolean upload(String sourceFile, String sourceDir) {
+		DataSender ds = new DataSender(sourceDir + sourceFile);
+		ds.start();
+		cmd.stor(sourceFile);
+		return true;
+	}
+
+	/*
+	 * gets files from ftp server and put it into the specified destination
+	 * directory
+	 */
+	public boolean download(String sourceFile, String destDir) {
+		DataAccepter da = new DataAccepter(FILE_DOWNLOAD, sourceFile, destDir);
+		da.start();
+		cmd.retr(sourceFile);
+		return true;
+	}
+
+	/*
+	 * write the server response to the client gui then clear the response
+	 * string buffer
+	 */
+	private void log() {
+
+		try {
+			int readData = -1;
+			// server's response ends with * which is 42 in ASCII code
+			// read server's response from other thread through pipe
+			while ((readData = pipeIn.read()) != 42) {
+				buffer.append((char) readData);
+			}
+			srvResponse = buffer.toString();
+			buffer.delete(0, buffer.length());
+			log.response(srvResponse);
+		} catch (IOException e) {
+			log.error("Failed to read server's response");
+		}
+	}
+}

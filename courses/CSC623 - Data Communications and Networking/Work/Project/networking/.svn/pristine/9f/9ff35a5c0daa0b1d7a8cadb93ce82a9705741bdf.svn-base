@@ -1,0 +1,23 @@
+/**
+ * This class encapsulates ObjectInputStream and is
+ * used by ftp server for sending File to client
+ * @author: Jing Zhao
+ **/
+package ftp.io;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+public class DataSocketObjectInputStream {
+
+	private ObjectInputStream dataIn;
+
+	public DataSocketObjectInputStream(ObjectInputStream in){
+		this.dataIn = in;
+	}
+	
+	public Object readObject() throws IOException, ClassNotFoundException {
+		return dataIn.readObject();
+	}
+
+}

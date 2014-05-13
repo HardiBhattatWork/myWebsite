@@ -1,0 +1,32 @@
+/**
+ * This class encapsulates ObjectOnputStream and is
+ * used by ftp client for receiving File from server
+ * @author: Jing Zhao
+ **/
+package ftp.io;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class DataSocketObjectOutputStream {
+	
+private ObjectOutputStream dataOut;
+	
+	public DataSocketObjectOutputStream(ObjectOutputStream out){
+		this.dataOut = out;
+	}
+	
+	public void writeObject(Object arg) throws IOException{
+
+		dataOut.writeObject(arg);
+	}
+	
+	public void flush() throws IOException{
+		dataOut.flush();
+	}
+	
+	public void close() throws IOException{
+		dataOut.close();
+	}
+
+}

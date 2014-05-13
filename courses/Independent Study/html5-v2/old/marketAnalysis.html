@@ -1,0 +1,251 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8" />
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title></title>
+
+    <meta name="description" content="" />
+    
+     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="style.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold" rel="stylesheet" /> <!-- Load Droid Serif from Google Fonts -->
+    
+    <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+    	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries -->
+    <script src="js/modernizr-1.7.min.js"></script>
+    <script src="js/respond.min.js"></script>
+	<script>   
+		var db = null;
+		function html5_storage_support() {
+			try {
+				return 'localStorage' in window && window['localStorage'] == null;
+			} catch (e) {
+				return false;
+			}
+		}
+		//CHECK TO SEE IF THE BROWSER IS COMPATIBLE 
+		if (!html5_storage_support) {
+			alert("This Might Be a Good Time to Upgrade Your Browser or Turn On Jeavascript");
+		} else {
+		  
+			//OPEN AND OR CREATE THE DATABASE ON THE USERS MACHINE
+			db = openDatabase("MyGameStory", "1", "My Game Story", 100000);
+		  
+			function storeMyContact(id) {
+				var maTagetPltfrm = document.getElementById('maTagetPltfrm').innerHTML;
+				var maTagetMrkt = document.getElementById('maTagetMrkt').innerHTML;
+				var maTagetRting = document.getElementById('maTagetRting').innerHTML;
+				var maTagetGenre = document.getElementById('maTagetGenre').innerHTML;
+				var maTopPrfrms = document.getElementById('maTopPrfrms').innerHTML;
+				var maFeatureCmprsn = document.getElementById('maFeatureCmprsn').innerHTML;
+				var maLegalAnlysis = document.getElementById('maLegalAnlysis').innerHTML;
+				
+				localStorage.setItem('MATagetPltfrm',maTagetPltfrm);
+				localStorage.setItem('MATagetMrkt',maTagetMrkt);
+				localStorage.setItem('MATagetRting',maTagetRting);
+				localStorage.setItem('MATagetGenre',maTagetGenre);
+				localStorage.setItem('MATopPrfrms',maTopPrfrms);
+				localStorage.setItem('MAFeatureCmprsn',maFeatureCmprsn);
+				localStorage.setItem('MALegalAnlysis',maLegalAnlysis);
+				
+			}
+			//GET STORED VALUES FROM KEYS TO DEFINE JAVASCRIPT VALUES OR DEFINE IF THEY DO NOT EXIST
+			function getMyMarketAnalysis() {
+				if ( localStorage.getItem('MATagetPltfrm')) {
+					var maTagetPltfrm = localStorage.getItem('MATagetPltfrm');
+					var maTagetMrkt = localStorage.getItem('MATagetMrkt');
+					var maTagetRting = localStorage.getItem('MATagetRting');
+					var maTagetGenre = localStorage.getItem('MATagetGenre');
+					var maTopPrfrms = localStorage.getItem('MATopPrfrms');
+					var maFeatureCmprsn = localStorage.getItem('MAFeatureCmprsn');
+					var maLegalAnlysis = localStorage.getItem('MALegalAnlysis');
+					
+				}
+				else {
+					var maTagetPltfrm = document.getElementById('maTagetPltfrm').innerHTML;
+					var maTagetMrkt = document.getElementById('maTagetMrkt').innerHTML;
+					var maTagetRting = document.getElementById('maTagetRting').innerHTML;
+					var maTagetGenre = document.getElementById('maTagetGenre').innerHTML;
+					var maTopPrfrms = document.getElementById('maTopPrfrms').innerHTML;
+					var maFeatureCmprsn = document.getElementById('maFeatureCmprsn').innerHTML;
+					var maLegalAnlysis = document.getElementById('maLegalAnlysis').innerHTML;
+					
+				}
+				document.getElementById('maTagetPltfrm').innerHTML = maTagetPltfrm;
+				document.getElementById('maTagetMrkt').innerHTML = maTagetMrkt;
+				document.getElementById('maTagetRting').innerHTML = maTagetRting;
+				document.getElementById('maTagetGenre').innerHTML = maTagetGenre;
+				document.getElementById('maTopPrfrms').innerHTML = maTopPrfrms;
+				document.getElementById('maFeatureCmprsn').innerHTML = maFeatureCmprsn;
+				document.getElementById('maLegalAnlysis').innerHTML = maLegalAnlysis;
+				
+			}
+			//CLEAR ALL DATA
+			function clearLocal() {
+				clear: localStorage.clear(); 
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header id="header" class="clearfix" role="banner">
+    
+        <hgroup>
+            <h1 id="site-title"><a href="index.html">Death Event</a></h1>
+            <h2 id="site-description">Game Design Document</h2>
+        </hgroup>
+    
+    </header> <!-- #header -->
+
+<div id="main" class="clearfix">
+
+	<!-- Navigation -->
+    <nav id="menu" class="clearfix" role="navigation">
+        <ul> 
+            <li>
+				<a href="index.html">Game Concept</a>
+				<ul>
+                    <li><a href="index.html#Intro">Introduction</a></li>
+                    <li><a href="index.html#Desc">Description</a></li>
+                </ul>
+			</li>
+            <li>
+                <a href="story.html">Story</a>
+                <ul>
+                    <li><a href="story.html#Story">The incident</a></li>
+                    <li><a href="story.html#Setting">Setting</a></li>
+                </ul>
+            </li>
+			<li class="current">
+                <a href="marketAnalysis.html">Market Analysis</a>
+                <ul>
+                    <li><a href="playerInterface.html">Player Interface</a></li>
+					<li><a href="visualArt.html">Visual Art</a></li>
+					<li><a href="soundsAndMusic.html">Sounds and Music</a></li>
+					<li><a href="technicalAnalysis.html">Technical Analysis</a></li>
+					<li><a href="gameMechanics.html">Game Mechanics</a></li>
+					<li><a href="costAnalysis.html">Cost Analysis</a></li>
+                </ul>
+            </li>
+			
+			
+        </ul>
+    </nav> <!-- #nav -->
+    
+    <!-- Show a "Please Upgrade" box to both IE7 and IE6 users (Edit to IE 6 if you just want to show it to IE6 users) - jQuery will load the content from js/ie.html into the div -->
+    
+    <!--[if lte IE 7]>
+        <div class="ie warning"></div>
+    <![endif]-->
+    
+    <div id="content" role="main">
+    
+        <article class="post">
+        
+            <h2 class="entry-title" id="marketAnalysis">Market Analysis</h2>            
+            <div class="entry-content">
+                <p></p>
+				<h4 class="entry-title" id="TrgtPltFrm">Target Platform</h4>
+				<div class="entry-content"  id="maTagetPltfrm" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+                <p></p>
+				<h4 class="entry-title" id="TrgtMrkt">Target Market</h4>
+				<div class="entry-content" id="maTagetMrkt" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+				<p></p>
+				<h4 class="entry-title" id="TrgtRate">Target ESRB Rating</h4>
+				<div class="entry-content" id="maTagetRting" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+				<p></p>
+				<h4 class="entry-title" id="TrgtGenre">Target Genre</h4>
+				<div class="entry-content" id="maTagetGenre" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div>
+				<p></p>
+				<h4 class="entry-title" id="TopPrfrm">Top Performers</h4>
+				<div class="entry-content" id="maTopPrfrms" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div>
+				<p></p>
+				<h4 class="entry-title" id="FetCmprsn">Feature Comparison</h4>
+				<div class="entry-content" id="maFeatureCmprsn" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div>
+				<p></p>
+				<h4 class="entry-title" id="LegalAnlysis">Legal Analysis</h4>
+				<div class="entry-content" id="maLegalAnlysis" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div>
+				
+            </div> <!-- .entry-content -->       
+        </article> <!-- .post 1 -->
+        
+        <hr /> <!-- Post seperator - Not the most optimal solution -->
+		<div><a onclick="clearLocal(); getMyContact();" href="javascript:void(0);">Clear All Of My Data</a></div>
+    
+    </div> <!-- #content -->
+    
+    <aside id="sidebar" role="complementary">
+    
+        <aside class="widget">
+            <h3>Quick Links</h3>
+            
+            <ul>
+                <li>
+					<a href="#marketAnalysis">Market Analysis</a>
+					<ul>
+						<li><a href="#TrgtPltFrm">Target Platform</a></li>
+						<li><a href="#TrgtMrkt">Target Market</a></li>
+						<li><a href="#TrgtGenre">Target Genre</a></li>
+						<li><a href="#TopPrfrm">Top Performers</a></li>
+						<li><a href="#FetCmprsn">Feature Comparison</a></li>
+						<li><a href="#LegalAnlysis">Legal Analysis</a></li>
+					</ul>
+				</li>
+                
+            </ul>
+        </aside> <!-- .widget -->
+        
+       
+    </aside> <!-- #sidebar -->
+    
+</div> <!-- #main -->
+    
+    <footer id="footer">
+        <!-- You're free to remove the credit link to Jayj.dk in the footer, but please, please leave it there :) -->
+        <p>
+            Copyright &copy; 2011 <a href="#">Death Event</a>
+            <span class="sep">|</span>
+        </p>
+    </footer> <!-- #footer -->
+    
+    <div class="clear"></div>
+
+</div> <!-- #wrapper -->
+
+	<!-- JavaScript at the bottom for fast page loading -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+	<script>
+	  getMyMarketAnalysis();
+	</script>
+</body>
+</html>

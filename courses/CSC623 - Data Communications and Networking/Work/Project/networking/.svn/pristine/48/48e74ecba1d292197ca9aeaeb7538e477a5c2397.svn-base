@@ -1,0 +1,96 @@
+/**
+ * Class action listener for the connection button on GUI.
+ * @author Jing Zhao
+ **/
+package ftp.gui.listener;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.UnknownHostException;
+import javax.swing.JTextField;
+
+import ftp.client.FtpCmdSession;
+import ftp.client.FtpConnector;
+import ftp.config.Settings;
+import ftp.gui.component.FileTable;
+import ftp.gui.component.FileTableModel;
+import ftp.message.FtpLogger;
+import ftp.message.JTextAreaOutput;
+
+public class ConnectListener implements ActionListener, Settings {
+
+	private JTextAreaOutput log = FtpLogger.getLog();
+	private JTextField hostText;
+	private JTextField portText;
+	private JTextField userText;
+	private JTextField pwdText;
+	private FileTable remTable;
+	private JTextField remText;
+
+	public ConnectListener(JTextField hostText, JTextField portText,
+			JTextField userText, JTextField pwdText, FileTable remTable,
+			JTextField remText) {
+		this.hostText = hostText;
+		this.portText = portText;
+		this.userText = userText;
+		this.pwdText = pwdText;
+		this.remTable = remTable;
+		this.remText = remText;
+
+	}
+
+	/*
+	 * sets up command socket connection with ftp server
+	 * passes the user and password for authentication
+	 * fetches and displays the current working directory of server
+	 */
+	public void actionPerformed(ActionEvent arg0) {
+
+		String host = hostText.getText();
+		int port = Integer.parseInt(portText.getText());
+		String user = userText.getText();
+		String pwd = pwdText.getText();
+
+		try {
+			log.status("connecting to " + host + ":" + port);
+			FtpConnector conn = new FtpConnector(host, port, user, pwd);
+			log.status("connection established");
+			int rc = conn.connect();
+			// 530 Login or password incorrect!
+			if (rc == 530) {
+				userText.setText("");
+				pwdText.setText("");
+			} 
+			//user password authentication succeeds. 
+			//fetches current working directory of server
+			else {
+				FtpCmdSession.setConnSession(conn);
+				String curPath = conn.pwd().trim();
+				remText.setText(curPath);
+				File[] files = conn.list();
+				FileTableModel model = (FileTableModel) remTable.getModel();
+				model.resetTableModel(files);
+//				remTable.setModel(model);
+				remTable.repaint();	
+				// add ActionListener so that an action is triggered once the Enter is
+				// pressed in remText JTextField
+//				DirChangeListener listener = new DirChangeListener(remTable, false, remText);
+//				remText.addActionListener(listener);
+//				// add ActionListener so that an action is triggered once mouse is
+//				// double clicked in remTable JTable
+//				remTable.addMouseListener(listener);
+				
+//				remTable.addMouseMotionListener(new MouseDraggedListener(remTable));
+			}
+		} catch (UnknownHostException e) {
+			log.error("Failed to establish connection to " + host + ":" + port);
+		} catch (IOException e) {
+			log.error("IO exception");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

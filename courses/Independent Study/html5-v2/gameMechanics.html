@@ -1,0 +1,849 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8" />
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title></title>
+
+    <meta name="description" content="" />
+    
+     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="style.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold" rel="stylesheet" /> <!-- Load Droid Serif from Google Fonts -->
+    
+    <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+    	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries -->
+    <script src="js/modernizr-1.7.min.js"></script>
+    <script src="js/respond.min.js"></script>
+	<script>   
+		var db = null;
+		function html5_storage_support() {
+			try {
+				return 'localStorage' in window && window['localStorage'] == null;
+			} catch (e) {
+				return false;
+			}
+		}
+		//CHECK TO SEE IF THE BROWSER IS COMPATIBLE 
+		if (!html5_storage_support) {
+			alert("This Might Be a Good Time to Upgrade Your Browser or Turn On Jeavascript");
+		} else {
+		  
+			//OPEN AND OR CREATE THE DATABASE ON THE USERS MACHINE
+			db = openDatabase("MyGameMechanics", "1", "My Game Mechanics", 2048*2048);
+		  
+			function storeMyContact(id) {
+				var sampleGP = document.getElementById('sampleGP').innerHTML;
+				var coreGP = document.getElementById('coreGP').innerHTML;
+				var repGP = document.getElementById('repGP').innerHTML;				
+				var campingGP = document.getElementById('campingGP').innerHTML;
+				var mallGP = document.getElementById('mallGP').innerHTML;
+				var convoyGP = document.getElementById('convoyGP').innerHTML;
+				var gameModes = document.getElementById('gameModes').innerHTML;
+				var singlePlyrGM = document.getElementById('singlePlyrGM').innerHTML;
+				var multiPlyrGM = document.getElementById('multiPlyrGM').innerHTML;
+				var serverOPGM = document.getElementById('serverOPGM').innerHTML;
+				var character1 = document.getElementById('character1').innerHTML;
+				var character2 = document.getElementById('character2').innerHTML;
+				var character3 = document.getElementById('character3').innerHTML;
+				var character4 = document.getElementById('character4').innerHTML;
+				var character5 = document.getElementById('character5').innerHTML;
+				var character6 = document.getElementById('character6').innerHTML;
+				var character7 = document.getElementById('character7').innerHTML;
+				var weaponsData = document.getElementById('weaponsData').innerHTML;
+				var weaponsExp = document.getElementById('weaponsExp').innerHTML;
+				var weaponsPhx = document.getElementById('weaponsPhx').innerHTML;
+				var aiDesign = document.getElementById('aiDesign').innerHTML;
+				var aiOverview = document.getElementById('aiOverview').innerHTML;
+				var walkersAI = document.getElementById('walkersAI').innerHTML;
+				var bandbAI = document.getElementById('bandbAI').innerHTML;
+				var walkersDesign = document.getElementById('walkersDesign').innerHTML;
+				var aiwOverview = document.getElementById('aiwOverview').innerHTML;
+				var aiwSpit = document.getElementById('aiwSpit').innerHTML;
+				var aiwThrow = document.getElementById('aiwThrow').innerHTML;
+				var aiwSmash = document.getElementById('aiwSmash').innerHTML;
+				var aiwBite = document.getElementById('aiwBite').innerHTML;
+				var aiwWeapon = document.getElementById('aiwWeapon').innerHTML;
+				var aiwJump = document.getElementById('aiwJump').innerHTML;
+				var aiwCrouch = document.getElementById('aiwCrouch').innerHTML;
+				var aiwStatMenu = document.getElementById('aiwStatMenu').innerHTML;
+				var aiwConsole = document.getElementById('aiwConsole').innerHTML;
+				
+				localStorage.setItem('SampleGP',sampleGP);
+				localStorage.setItem('CoreGP',coreGP);
+				localStorage.setItem('RepGP',repGP);
+				localStorage.setItem('CampingGP',campingGP);
+				localStorage.setItem('MallGP',mallGP);
+				localStorage.setItem('ConvoyGP',convoyGP);
+				localStorage.setItem('GameModes',gameModes);
+				localStorage.setItem('SinglePlyrGM',singlePlyrGM);
+				localStorage.setItem('MultiPlyrGM',multiPlyrGM);
+				localStorage.setItem('ServerOPGM',serverOPGM);
+				localStorage.setItem('Character1',character1);
+				localStorage.setItem('Character2',character2);
+				localStorage.setItem('Character3',character3);
+				localStorage.setItem('Character4',character4);
+				localStorage.setItem('Character5',character5);
+				localStorage.setItem('Character6',character6);
+				localStorage.setItem('Character7',character7);
+				localStorage.setItem('WeaponsData',weaponsData);
+				localStorage.setItem('WeaponsExp',weaponsExp);
+				localStorage.setItem('WeaponsPhx',weaponsPhx);
+				localStorage.setItem('AIDesign',aiDesign);
+				localStorage.setItem('AIOverview',aiOverview);
+				localStorage.setItem('WalkersAI',walkersAI);
+				localStorage.setItem('BandBAI',bandbAI);
+				localStorage.setItem('WalkersDesign',walkersDesign);
+				localStorage.setItem('AIWOverview',aiwOverview);
+				localStorage.setItem('AIWSpit',aiwSpit);
+				localStorage.setItem('AIWThrow',aiwThrow);
+				localStorage.setItem('AIWSmash',aiwSmash);
+				localStorage.setItem('AIWBite',aiwBite);
+				localStorage.setItem('AIWWeapon',aiwWeapon);
+				localStorage.setItem('AIWJump',aiwJump);
+				localStorage.setItem('AIWCrouch',aiwCrouch);
+				localStorage.setItem('AIWStatMenu',aiwStatMenu);
+				localStorage.setItem('AIWConsole',aiwConsole);
+				
+			}
+			//GET STORED VALUES FROM KEYS TO DEFINE JAVASCRIPT VALUES OR DEFINE IF THEY DO NOT EXIST
+			function getMyGameMechanics() {
+				if ( localStorage.getItem('SampleGP')) {
+					var sampleGP = localStorage.getItem('SampleGP');
+					var coreGP = localStorage.getItem('CoreGP');
+					var repGP = localStorage.getItem('RepGP');
+					var campingGP = localStorage.getItem('CampingGP');
+					var mallGP = localStorage.getItem('MallGP');
+					var convoyGP = localStorage.getItem('ConvoyGP');
+					var gameModes = localStorage.getItem('GameModes');
+					var singlePlyrGM = localStorage.getItem('SinglePlyrGM');
+					var multiPlyrGM = localStorage.getItem('MultiPlyrGM');
+					var serverOPGM = localStorage.getItem('ServerOPGM');
+					var character1 = localStorage.getItem('Character1');
+					var character2 = localStorage.getItem('Character2');
+					var character3 = localStorage.getItem('Character3');
+					var character4 = localStorage.getItem('Character4');
+					var character5 = localStorage.getItem('Character5');
+					var character6 = localStorage.getItem('Character6');
+					var character7 = localStorage.getItem('Character7');
+					var weaponsData = localStorage.getItem('WeaponsData');
+					var weaponsExp = localStorage.getItem('WeaponsExp');
+					var weaponsPhx = localStorage.getItem('WeaponsPhx');
+					var aiDesign = localStorage.getItem('AIDesign');
+					var aiDesign = localStorage.getItem('AIOverview');
+					var walkersAI = localStorage.getItem('WalkersAI');
+					var bandbAI = localStorage.getItem('BandBAI');
+					var walkersDesign = localStorage.getItem('WalkersDesign');
+					var aiwOverview = localStorage.getItem('AIWOverview');
+					var aiwSpit = localStorage.getItem('AIWSpit');
+					var aiwThrow = localStorage.getItem('AIWThrow');
+					var aiwSmash = localStorage.getItem('AIWSmash');
+					var aiwBite = localStorage.getItem('AIWBite');
+					var aiwWeapon = localStorage.getItem('AIWWeapon');
+					var aiwJump = localStorage.getItem('AIWJump');
+					var aiwCrouch = localStorage.getItem('AIWCrouch');
+					var aiwStatMenu = localStorage.getItem('AIWStatMenu');
+					var aiwConsole = localStorage.getItem('AIWConsole');
+					
+				}
+				else {
+					var sampleGP = document.getElementById('sampleGP').innerHTML;
+					var coreGP = document.getElementById('coreGP').innerHTML;
+					var repGP = document.getElementById('repGP').innerHTML;
+					var campingGP = document.getElementById('campingGP').innerHTML;
+					var mallGP = document.getElementById('mallGP').innerHTML;
+					var convoyGP = document.getElementById('convoyGP').innerHTML;
+					var gameModes = document.getElementById('gameModes').innerHTML;
+					var singlePlyrGM = document.getElementById('singlePlyrGM').innerHTML;
+					var multiPlyrGM = document.getElementById('multiPlyrGM').innerHTML;
+					var serverOPGM = document.getElementById('serverOPGM').innerHTML;
+					var character1 = document.getElementById('character1').innerHTML;
+					var character2 = document.getElementById('character2').innerHTML;
+					var character3 = document.getElementById('character3').innerHTML;
+					var character4 = document.getElementById('character4').innerHTML;
+					var character5 = document.getElementById('character5').innerHTML;
+					var character6 = document.getElementById('character6').innerHTML;
+					var character7 = document.getElementById('character7').innerHTML;
+					var weaponsData = document.getElementById('weaponsData').innerHTML;
+					var weaponsExp = document.getElementById('weaponsExp').innerHTML;
+					var weaponsPhx = document.getElementById('weaponsPhx').innerHTML;
+					var aiDesign = document.getElementById('aiDesign').innerHTML;
+					var aiOverview = document.getElementById('aiOverview').innerHTML;
+					var walkersAI = document.getElementById('walkersAI').innerHTML;
+					var bandbAI = document.getElementById('bandbAI').innerHTML;
+					var walkersDesign = document.getElementById('walkersDesign').innerHTML;
+					var aiwOverview = document.getElementById('aiwOverview').innerHTML;
+					var aiwSpit = document.getElementById('aiwSpit').innerHTML;
+					var aiwThrow = document.getElementById('aiwThrow').innerHTML;
+					var aiwSmash = document.getElementById('aiwSmash').innerHTML;
+					var aiwBite = document.getElementById('aiwBite').innerHTML;
+					var aiwWeapon = document.getElementById('aiwWeapon').innerHTML;
+					var aiwJump = document.getElementById('aiwJump').innerHTML;
+					var aiwCrouch = document.getElementById('aiwCrouch').innerHTML;
+					var aiwStatMenu = document.getElementById('aiwStatMenu').innerHTML;
+					var aiwConsole = document.getElementById('aiwConsole').innerHTML;
+					
+				}
+				document.getElementById('sampleGP').innerHTML = sampleGP;
+				document.getElementById('coreGP').innerHTML = coreGP;
+				document.getElementById('repGP').innerHTML = repGP;
+				document.getElementById('campingGP').innerHTML = campingGP;
+				document.getElementById('mallGP').innerHTML = mallGP;
+				document.getElementById('convoyGP').innerHTML = convoyGP;
+				document.getElementById('gameModes').innerHTML = gameModes;
+				document.getElementById('singlePlyrGM').innerHTML = singlePlyrGM;
+				document.getElementById('multiPlyrGM').innerHTML = multiPlyrGM;
+				document.getElementById('serverOPGM').innerHTML = serverOPGM;
+				document.getElementById('character1').innerHTML = character1;
+				document.getElementById('character2').innerHTML = character2;
+				document.getElementById('character3').innerHTML = character3;
+				document.getElementById('character4').innerHTML = character4;
+				document.getElementById('character5').innerHTML = character5;
+				document.getElementById('character6').innerHTML = character6;
+				document.getElementById('character7').innerHTML = character7;
+				document.getElementById('weaponsData').innerHTML = weaponsData;
+				document.getElementById('weaponsExp').innerHTML = weaponsExp;
+				document.getElementById('weaponsPhx').innerHTML = weaponsPhx;
+				document.getElementById('aiDesign').innerHTML = aiDesign;
+				document.getElementById('aiOverview').innerHTML = aiOverview;
+				document.getElementById('walkersAI').innerHTML = walkersAI;
+				document.getElementById('bandbAI').innerHTML = bandbAI;
+				document.getElementById('walkersDesign').innerHTML = walkersDesign;
+				document.getElementById('aiwOverview').innerHTML = aiwOverview;
+				document.getElementById('aiwSpit').innerHTML = aiwSpit;
+				document.getElementById('aiwThrow').innerHTML = aiwThrow;
+				document.getElementById('aiwSmash').innerHTML = aiwSmash;
+				document.getElementById('aiwBite').innerHTML = aiwBite;
+				document.getElementById('aiwWeapon').innerHTML = aiwWeapon;
+				document.getElementById('aiwJump').innerHTML = aiwJump;
+				document.getElementById('aiwCrouch').innerHTML = aiwCrouch;
+				document.getElementById('aiwStatMenu').innerHTML = aiwStatMenu;
+				document.getElementById('aiwConsole').innerHTML = aiwConsole;
+				
+			}
+			//CLEAR ALL DATA
+			function clearLocal() {
+				clear: localStorage.clear(); 
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header id="header" class="clearfix" role="banner">
+    
+        <hgroup>
+            <h1 id="site-title"><a href="index.html">Death Event</a></h1>
+            <h2 id="site-description">Game Design Document</h2>
+        </hgroup>
+    
+    </header> <!-- #header -->
+
+<div id="main" class="clearfix">
+
+	<!-- Navigation -->
+    <nav id="menu" class="clearfix" role="navigation">
+        <ul> 
+            <li>
+				<a href="index.html">Game Concept</a>
+				<ul>
+                    <li><a href="index.html#Intro">Introduction</a></li>
+                    <li><a href="index.html#Desc">Description</a></li>
+                </ul>
+			</li>
+            <li>
+                <a href="story.html">Story</a>
+                <ul>
+                    <li><a href="story.html#Story">The incident</a></li>
+                    <li><a href="story.html#Setting">Setting</a></li>
+                </ul>
+            </li>
+			<li class="current">
+                <a href="gameMechanics.html">Game Mechanics</a>
+                <ul>
+                    <li><a href="playerInterface.html">Player Interface</a></li>
+					<li><a href="visualArt.html">Visual Art</a></li>
+					<li><a href="soundsAndMusic.html">Sounds and Music</a></li>
+					<li><a href="technicalAnalysis.html">Technical Analysis</a></li>
+					<li><a href="costAnalysis.html">Cost Analysis</a></li>
+                </ul>
+            </li>
+			
+			
+        </ul>
+    </nav> <!-- #nav -->
+    
+    <!-- Show a "Please Upgrade" box to both IE7 and IE6 users (Edit to IE 6 if you just want to show it to IE6 users) - jQuery will load the content from js/ie.html into the div -->
+    
+    <!--[if lte IE 7]>
+        <div class="ie warning"></div>
+    <![endif]-->
+    
+    <div id="content" role="main">
+    
+        <article class="post">
+        
+            <h2 class="entry-title" id="Sample">Sample Game Play</h2>
+            <div class="entry-content"  id="sampleGP" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>
+                    Crouching in the early dawn on top of a 20 story building looking down upon a hoard of Walking trying to force themselves into the building to quench their hunger for flesh. In your search to find supplies and fuel you have been forced to take refuge on top of a building to help others within you team to escape. You are accompanied by a Gangster who you come upon and rescue during your supply mission. You must find refuge soon as you are fully aware that when night comes you will also have to worry about the Dark Hunters that will be out and about in search for sport. However you are also aware of the fact the night time is something the best time to make your move as this is when the battle between the Walkers and the Dark Hunters begin.
+                </p>
+               
+            </div> <!-- .entry-content -->       
+        </article> <!-- .post -->
+        
+        <hr /> <!-- Post seperator - Not the most optimal solution -->
+        
+        <article class="post">
+        
+            <h2 class="entry-title" id="Core">Core Game Play / Game Flow</h2>
+            <div class="entry-content"  id="coreGP" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>
+                    Game play in Death Event is fast-paced and action-packed.   It combines the shoot-em-up, instant-gratification style of an arcade gun-blazing maelstrom with longer term rewards more usually associated with adventure games, including the acquisition of reputation and leadership gauge.
+                </p>
+                <p>
+					The pure action-elements form the core of the game play.  Melee to mid-range combat with large, frenzied flocks of Walkers is the norm.  Hesitation, ammo-conversation, slow and drawn out strategies are of no use here; your survival depends on being either very fast, or very strong.  Intelligence will never be punished of course, and opportunities will arise where a keen and observant player will clearly have the advantage over the casual player; examples include specific Walker and Dark Hunter behaviors and weaknesses, vulnerabilities of certain Walkers and Dark Hunters to particular weapons or environmental conditions, as well as such standard tactical conundrums as "Who do I get rid of first?", given a mixed bag of Walkers, Corruptor and Dark Hunters around you from all directions.
+				</p>
+				<p>
+					The longer term, adventure-style elements of the game include the player's accumulated reputation points, acquired supplies and special, rare valuables, and the exploration and control of territory for safety.  These aspects of the game allow the player an on-going campaign style of play, with elements of character-development, encouraging the player to reach new goals and levels of success, as well as fostering multiple styles of competition from others vying for your position as new people are rescued introduced to the community.
+				</p>
+            </div> <!-- .entry-content -->
+			<p></p>
+        
+            <h4 class="entry-title" id="Rep">Reputation</h4>
+            <div class="entry-content"  id="repGP" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>Reputation is a core component of Death Event. Reputation can be gained through several methods.  First of all, each Zomby-type will have a reputation value attached to it, which upon disposal of said zomby will be awarded to the player (some, if not most zombies will actually have very little reputation points; they are reserved for the more difficult, legendary of beasts).  But a zombies's reputation score is not the final word on how much a player receives; indeed, the method, grace, and skill employed in a zombiess demise are all factored into points won, so that the truly inspired players gain extra bonus points, so to speak.</p>
+				<p>Reputation is also gained through the acquisition of rare valuables, notably essential supplies for survival, defense and creative execution.  Scattered throughout the game will be various highly prized objects which will be added to a player's permanent collection, thereby increasing the player's overall reputation score.</p>
+				<p>The other method of gaining reputation is through proper management of tasks distribution when camping, infiltrating a mall or directing a convoy.  See below.</p>
+            </div> <!-- .entry-content -->
+ 
+        
+            <h4 class="entry-title" id="Camp">Camping</h4>
+            <div class="entry-content"  id="campingGP" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>Camping involves many small nuances with include gathering of resources such as water, wood and food growing in the wild to farming for food, washing cloths and defending the area from potential threats. Managing these tasks is the job of the leader to distribute. Each of these tasks will be portrayed through mini games which the user will also be able to play in an effort to earn reputation points and increase overall morality of the group you are managing. Mini games such as <a href="http://www.popcap.com/extras/pvz/?">Plants Vs. Zombies</a>is a perfect example of how this is possible. </p>
+            </div> <!-- .entry-content -->
+ 
+        
+            <h4 class="entry-title" id="Mall">Mall</h4>
+            <div class="entry-content"  id="mallGP" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>Enter content here.</p>
+            </div> <!-- .entry-content -->
+
+        
+            <h4 class="entry-title" id="Convoy">Convoy</h4>
+            <div class="entry-content"  id="convoyGP" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>Enter content here.</p>
+            </div> <!-- .entry-content -->
+        </article> <!-- .post -->
+		<hr /> <!-- Post seperator - Not the most optimal solution -->
+		<article class="post">
+        
+            <h2 class="entry-title" id="gameMode">Game Modes</h2>
+            <div class="entry-content" id="gameModes" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>Enter content here.</p>
+            </div> <!-- .entry-content -->
+        
+            <h4 class="entry-title" id="Convoy">Single Player</h4>
+            <div class="entry-content" id="singlePlyrGM" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>Enter content here.</p>
+            </div> <!-- .entry-content -->
+        
+            <h4 class="entry-title" id="Convoy">Multi Player</h4>
+            <div class="entry-content" id="multiPlyrGM" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>Enter content here.</p>
+            </div> <!-- .entry-content -->
+			<div id="serverOPGM" contenteditable="true" onkeyup="storeMyContact(this.id)">
+			   <table summary="Server Options">				
+					<caption>Server Options</caption>				
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Value</th>
+						</tr>
+					</thead>				
+					<tfoot>
+						<tr>
+							<td>Option</td>
+							<td>Value</td>
+						</tr>
+					</tfoot> 
+					
+					<tbody>
+						<tr>
+							<td>Zombies</td>
+							<td>On/Off/Range from few to many</td>
+						</tr>
+						
+						<tr>
+							<td>Weapons</td>
+							<td>All/Select Styles Allowed</td>
+						</tr>
+						
+						<tr>
+							<td>Alliances
+								<p>On an individual basis</p>
+								<p>No friendly fire</p>
+							</td>
+							<td>On/Off</td>
+						</tr>
+						
+						<tr>
+							<td>Team-Play
+								<p>No friendly fire</p>
+								<p>Reputation divided evenly amongst team members</p>
+							</td>
+							<td>On/Off</td>
+						</tr>
+						<tr>
+							<td>Team-Play
+								<p>Map Size</p>
+								<p>Range from small to large</p>
+							</td>
+							<td>On/Off</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+        </article> <!-- .post -->
+		<hr /> <!-- Post seperator - Not the most optimal solution -->
+		
+		<article class="post">
+        
+            <h2 class="entry-title" id="PlyrDesign">Player Design / Characters</h2>
+            <div class="entry-content">
+                <p></p>
+				<h4 class="entry-title" id="architect">Architect</h4>
+				<div class="entry-content">
+					<div id="character1" contenteditable="true" onkeyup="storeMyContact(this.id)">
+						<h6>Homeland: </h6>
+					</div>
+				</div> <!-- .entry-content -->
+				<p></p>
+				<h4 class="entry-title" id="redNeck">Red Neck</h4>
+				<div class="entry-content">
+					<div id="character2" contenteditable="true" onkeyup="storeMyContact(this.id)">
+						<h6>Homeland: </h6>
+					</div>
+				</div> <!-- .entry-content -->
+				<p></p>
+				<h4 class="entry-title" id="policeSherif">Police Sherif</h4>
+				<div class="entry-content">
+					<div id="character3" contenteditable="true" onkeyup="storeMyContact(this.id)">
+						<h6>Homeland: </h6>
+					</div>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="farmer">Farmer</h4>
+				<div class="entry-content">
+					<div id="character4" contenteditable="true" onkeyup="storeMyContact(this.id)">
+						<h6>Homeland: </h6>
+					</div>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="pizzaDeliveryBoy">Pizza Delivery Boy</h4>
+				<div class="entry-content">
+					<div id="character5" contenteditable="true" onkeyup="storeMyContact(this.id)">
+						<h6>Homeland: </h6>
+					</div>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="darkHunter">Dark Hunter</h4>
+				<div class="entry-content">
+					<div id="character6" contenteditable="true" onkeyup="storeMyContact(this.id)">
+						<h6>Homeland: </h6>
+					</div>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="walkers">Walkers</h4>
+				<div class="entry-content">
+					<div id="character7" contenteditable="true" onkeyup="storeMyContact(this.id)">
+						<h6>Homeland: </h6>
+					</div>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				
+            </div> <!-- .entry-content -->
+        </article> <!-- .post-->	
+		
+		<hr /> <!-- Post seperator - Not the most optimal solution -->
+		<article class="post">
+        
+            <h2 class="entry-title" id="PlyrWepns">Player Weapons</h2>
+            <div class="entry-content">
+                <h4>Weapons Overview</h4>
+				<div id="weaponsData" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<table summary="Weapons Data" style="margin: 0px 0px 0px -20px;">				
+					<caption>Weapons Data</caption>				
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Range</th>
+							<th>Projectile mass</th>
+							<th>Muzzle velocity</th>
+							<th>Opening angle</th>
+							<th>Projectile damage</th>
+							<th>Fire rate</th>
+							<th>Capacity</th>
+							<th>Reload time</th>
+						</tr>
+					</thead>				
+					<tfoot>
+						<tr>
+							<td>Name</td>
+							<td>Range</td>
+							<td>Projectile mass</td>
+							<td>Muzzle velocity</td>
+							<td>Opening angle</td>
+							<td>Projectile damage</td>
+							<td>Fire rate</td>
+							<td>Capacity</td>
+							<td>Reload time</td>
+						</tr>
+					</tfoot> 
+					
+					<tbody>
+						<tr>
+							<td>Q2741  pistol</td>
+							<td>Short</td>
+							<td>Light</td>
+							<td>Medium</td>						
+							<td>Small</td>
+							<td>Small</td>
+							<td>Moderate</td>
+							<td>Small</td>
+							<td>Short</td>
+						</tr>
+						<tr>
+							<td>Shotgun</td>
+							<td>Short</td>
+							<td>Medium</td>
+							<td>High</td>						
+							<td>Large</td>
+							<td>High</td>
+							<td>Moderate</td>
+							<td>Small</td>
+							<td>Moderate</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+            </div> <!-- .entry-content -->
+    
+			<h4 class="entry-title" id="WeapExp">Weapons Examples</h4>
+            <div class="entry-content" id="weaponsExp" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <h6>Q2741-VP Handgun: </h6>
+				<ul> 
+					<li>Description</li>
+				</ul>
+				<h6>Shotgun: </h6>
+				<ul> 
+					<li>Description</li>
+				</ul>
+            </div> <!-- .entry-content -->
+			<p></p>
+			<h4 class="entry-title" id="Convoy">Weapons Physics</h4>
+            <div class="entry-content" id="weaponsPhx" contenteditable="true" onkeyup="storeMyContact(this.id)">
+               <p>Click here</p>
+            </div> <!-- .entry-content -->
+        </article> <!-- .post -->
+		<hr /> <!-- Post seperator - Not the most optimal solution -->
+		<article class="post">        
+			<h2 class="entry-title" id="AIDesign">Artificial Intelligence Design</h2>
+            <div class="entry-content" id="aiDesign" contenteditable="true" onkeyup="storeMyContact(this.id)">
+               <p>Click here</p>			   
+            </div> <!-- .entry-content -->
+			
+			<h4 class="entry-title" id="Overview">Overview</h4>
+			<div class="entry-content" id="aiOverview"contenteditable="true" onkeyup="storeMyContact(this.id)">
+               <p>Click here</p>			   
+            </div> <!-- .entry-content -->
+			<h4 class="entry-title" id="Walkers">The Enemy:  Walkers</h4>
+			<div class="entry-content" id="walkersAI" contenteditable="true" onkeyup="storeMyContact(this.id)">
+               <p>Click here</p>			   
+            </div> <!-- .entry-content -->
+			<h4 class="entry-title" id="BandB">Brains and Behavior</h4>
+			<div class="entry-content" id="bandbAI" contenteditable="true" onkeyup="storeMyContact(this.id)">
+               <h6>Motion Brain: </h6>
+				<ul> 
+					<li>Description</li>
+				</ul>	
+				<h6>Fight or Flight Brain: </h6>
+				<ul> 
+					<li>Description</li>
+				</ul>
+				<h6>In-Combat Brain: </h6>
+				<ul> 
+					<li>Description</li>
+				</ul>
+				<h6>Nest-Development Brain: </h6>
+				<ul> 
+					<li>Description</li>
+				</ul>				
+            </div> <!-- .entry-content -->
+			<h4 class="entry-title" id="Walkers">Walkers Design</h4>
+			<div class="entry-content" id="walkersDesign" contenteditable="true" onkeyup="storeMyContact(this.id)">
+				<h6>Overview </h6>
+				<p>...</p>
+				<table summary="Enemy Attributes" style="margin: 0px 0px 0px -150px;">				
+					<caption>Enemy Attributes</caption>							
+					<tbody>
+						<tr>
+							<td>Dark Hunter</td>
+							<td>
+								<table summary="Attributes">				
+									<caption>Attributes</caption>				
+									<thead>
+										<tr>
+											<th>Speed</th>
+											<th>Strength</th>
+											<th>Sight</th>
+											<th>Smell</th>
+											<th>Hearing</th>
+											<th>Mass</th>
+										</tr>
+									</thead>				
+									<tfoot>
+										<tr>
+											<td>Speed</td>
+											<td>Strength</td>
+											<td>Sight</td>
+											<td>Smell</td>
+											<td>Hearing</td>
+											<td>Mass</td>
+										</tr>
+									</tfoot> 
+									
+									<tbody>
+										<tr>
+											<td>50</td>
+											<td>65</td>
+											<td>20</td>
+											<td>70</td>
+											<td>90</td>
+											<td>25</td>											
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td>
+								<table summary="Brain Categories">				
+									<caption>Brain Categories</caption>				
+									<thead>
+										<tr>
+											<th>Grouping</th>
+											<th>Morale</th>											
+											<th>Combat</th>
+											<th>Nest-Development</th>
+										</tr>
+									</thead>				
+									<tfoot>
+										<tr>
+											<td>Grouping</td>
+											<td>Morale</td>
+											<td>Combat</td>
+											<td>Nest-Development</td>
+										</tr>
+									</tfoot> 
+									
+									<tbody>
+										<tr>
+											<td>Solitary</td>
+											<td>High</td>
+											<td>Fierce</td>
+											<td>Low</td>										
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>Walkers</td>
+							<td>
+								<table summary="Attributes">				
+									<caption>Attributes</caption>				
+									<thead>
+										<tr>
+											<th>Speed</th>
+											<th>Strength</th>
+											<th>Sight</th>
+											<th>Smell</th>
+											<th>Hearing</th>
+											<th>Mass</th>
+										</tr>
+									</thead>				
+									<tfoot>
+										<tr>
+											<td>Speed</td>
+											<td>Strength</td>
+											<td>Sight</td>
+											<td>Smell</td>
+											<td>Hearing</td>
+											<td>Mass</td>
+										</tr>
+									</tfoot> 
+									
+									<tbody>
+										<tr>
+											<td>70</td>
+											<td>90</td>
+											<td>70</td>
+											<td>70</td>
+											<td>90</td>
+											<td>50</td>											
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td>
+								<table summary="Brain Categories">				
+									<caption>Brain Categories</caption>				
+									<thead>
+										<tr>
+											<th>Grouping</th>
+											<th>Morale</th>											
+											<th>Combat</th>
+											<th>Nest-Development</th>
+										</tr>
+									</thead>				
+									<tfoot>
+										<tr>
+											<td>Grouping</td>
+											<td>Morale</td>
+											<td>Combat</td>
+											<td>Nest-Development</td>
+										</tr>
+									</tfoot> 
+									
+									<tbody>
+										<tr>
+											<td>Flock</td>
+											<td>High</td>
+											<td>Fierce</td>
+											<td>Medium</td>										
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						
+						
+					</tbody>
+				</table>
+            </div> <!-- .entry-content -->
+        </article> <!-- .post -->
+		<article class="post">
+        
+            <h2 class="entry-title" id="AIWepons">Artificial Intelligence Weapons</h2>
+            <div class="entry-content" >
+                <p></p>
+				<h4 class="entry-title" id="AIWOverview">Overview</h4>
+				<div class="entry-content" id="aiwOverview" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> <!-- .entry-content -->
+				<p></p>
+				<h4 class="entry-title" id="AIWSpit">Spit</h4>
+				<div class="entry-content" id="aiwSpit"  contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Dark Hunter: </p>
+				</div> <!-- .entry-content -->
+				<p></p>
+				<h4 class="entry-title" id="AIWThrow">Throw</h4>
+				<div class="entry-content" id="aiwThrow" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Walker and Dark Hunter: </p>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="AIWSmash">Smash</h4>
+				<div class="entry-content" id="aiwSmash" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Walker and Dark Hunter: </p>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="AIWBite">Bite</h4>
+				<div class="entry-content" id="aiwBite" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Walker: </p>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="AIWWeapon">Weapon Changing</h4>
+				<div class="entry-content" id="aiwWeapon" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>The player will be able to easily switch between weapons.</p>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="AIWJump">Jump</h4>
+				<div class="entry-content" id="aiwJump" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>The player will be able to jump.</p>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="AIWCrouch">Crouch</h4>
+				<div class="entry-content" id="aiwCrouch" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>The player will be able to crouch.</p>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="AIWStatMenu">Status Menu</h4>
+				<div class="entry-content" id="aiwStatMenu" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>The player will be able to bring up the status of their reputation as well as give them further access to other menus and options.</p>
+				</div> <!-- .entry-content -->	
+				<p></p>
+				<h4 class="entry-title" id="AIWConsole">Console</h4>
+				<div class="entry-content" id="aiwConsole" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>The player will be able to access the console and see some information about what the game is currently doing. Note that this is for advanced player information.</p>
+				</div> <!-- .entry-content -->	
+				<p></p>
+            </div> <!-- .entry-content -->
+                  
+        </article> <!-- .post-->
+		<hr /> <!-- Post seperator - Not the most optimal solution -->
+		<div><a onclick="clearLocal(); getMyContact();" href="javascript:void(0);">Clear All Of My Data</a></div>
+    </div> <!-- #content -->
+    
+    <aside id="sidebar" role="complementary">
+    
+        <aside class="widget">
+            <h3>Quick Links</h3>
+            
+            <ul>
+                <li><a href="#Sample">Sample Game Play</a></li>
+                <li><a href="#Core">Core Game Play / Game Flow</a></li>
+				<li><a href="#gameMode">Game Mode</a></li>
+				<li><a href="#PlyrDesign">Player Design</a></li>
+				<li><a href="#PlyrWepns">Player Weapons</a></li>
+				<li><a href="#AIDesign">Artificial Intelligence Design</a></li>
+				<li><a href="#AIWepons">Artificial Intelligence Weapons</a></li>
+            </ul>
+        </aside> <!-- .widget -->
+        
+       
+    </aside> <!-- #sidebar -->
+    
+</div> <!-- #main -->
+    
+    <footer id="footer">
+        <!-- You're free to remove the credit link to Jayj.dk in the footer, but please, please leave it there :) -->
+        <p>
+            Copyright &copy; 2011 <a href="#">Death Event</a>
+            <span class="sep">|</span>
+        </p>
+    </footer> <!-- #footer -->
+    
+    <div class="clear"></div>
+
+</div> <!-- #wrapper -->
+
+	<!-- JavaScript at the bottom for fast page loading -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+	<script>
+	  getMyGameMechanics();
+	</script>
+</body>
+</html>

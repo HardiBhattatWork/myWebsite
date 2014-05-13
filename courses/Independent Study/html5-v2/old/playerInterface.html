@@ -1,0 +1,240 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8" />
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title></title>
+
+    <meta name="description" content="" />
+    
+     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="style.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold" rel="stylesheet" /> <!-- Load Droid Serif from Google Fonts -->
+    
+    <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+    	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries -->
+    <script src="js/modernizr-1.7.min.js"></script>
+    <script src="js/respond.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+	<script>   
+		var db = null;
+		function html5_storage_support() {
+			try {
+				return 'localStorage' in window && window['localStorage'] == null;
+			} catch (e) {
+				return false;
+			}
+		}
+		//CHECK TO SEE IF THE BROWSER IS COMPATIBLE 
+		if (!html5_storage_support) {
+			alert("This Might Be a Good Time to Upgrade Your Browser or Turn On Jeavascript");
+		} else {
+		  
+			//OPEN AND OR CREATE THE DATABASE ON THE USERS MACHINE
+			db = openDatabase("MyGameStory", "1", "My Game Story", 100000);
+		  
+			function storeMyContact(id) {
+				var piHUD = document.getElementById('piHUD').innerHTML;
+				var piMenus = document.getElementById('piMenus').innerHTML;
+				localStorage.setItem('PIHUD',piHUD);
+				localStorage.setItem('PIMenus',piMenus);
+			}
+			//GET STORED VALUES FROM KEYS TO DEFINE JAVASCRIPT VALUES OR DEFINE IF THEY DO NOT EXIST
+			function getMyPlayerInterface() {
+				if ( localStorage.getItem('piHUD')) {
+					var piHUD = localStorage.getItem('PIHUD');
+					var piMenus = localStorage.getItem('PIMenus');
+				}
+				else {
+					var piHUD = document.getElementById('piHUD').innerHTML;
+					var piMenus = document.getElementById('piMenus').innerHTML;
+				}
+				document.getElementById('piHUD').innerHTML = piHUD;
+				document.getElementById('piMenus').innerHTML = piMenus;
+			}
+			//CLEAR ALL DATA
+			function clearLocal() {
+				clear: localStorage.clear(); 
+				return false;
+			}
+		}
+	</script>
+	 <style type="text/css"><!--
+      #container { position: relative; }
+      #imageView { border: 1px solid #000; }
+      #imageTemp { position: absolute; top: 1px; left: 1px; }
+    --></style>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header id="header" class="clearfix" role="banner">
+    
+        <hgroup>
+            <h1 id="site-title"><a href="index.html">Death Event</a></h1>
+            <h2 id="site-description">Game Design Document</h2>
+        </hgroup>
+    
+    </header> <!-- #header -->
+
+<div id="main" class="clearfix">
+
+	<!-- Navigation -->
+    <nav id="menu" class="clearfix" role="navigation">
+        <ul> 
+            <li>
+				<a href="index.html">Game Concept</a>
+				<ul>
+                    <li><a href="index.html#Intro">Introduction</a></li>
+                    <li><a href="index.html#Desc">Description</a></li>
+                </ul>
+			</li>
+            <li>
+                <a href="story.html">Story</a>
+                <ul>
+                    <li><a href="story.html#Story">The incident</a></li>
+                    <li><a href="story.html#Setting">Setting</a></li>
+                </ul>
+            </li>
+			<li class="current">
+                <a href="playerInterface.html">Player Interface</a>
+                <ul>
+                    <li><a href="soundsAndMusic.html">Sounds and Music</a></li>
+					<li><a href="visualArt.html">Visual Art</a></li>
+					<li><a href="gameMechanics.html">Game Mechanics</a></li>
+					<li><a href="technicalAnalysis.html">Technical Analysis</a></li>
+					<li><a href="marketAnalysis.html">Market Analysis</a></li>
+					<li><a href="costAnalysis.html">Cost Analysis</a></li>
+                </ul>
+            </li>
+			
+			
+        </ul>
+    </nav> <!-- #nav -->
+    
+    <!-- Show a "Please Upgrade" box to both IE7 and IE6 users (Edit to IE 6 if you just want to show it to IE6 users) - jQuery will load the content from js/ie.html into the div -->
+    
+    <!--[if lte IE 7]>
+        <div class="ie warning"></div>
+    <![endif]-->
+    
+    <div id="content" role="main">
+    
+        <article class="post">
+        
+            <h2 class="entry-title" id="UIOverview">UI Overview</h2>
+            <!-- <img src="images/thumbnail1.jpg" alt="Post thumbnail" /> -->
+			 <p><label>Drawing tool: <select id="dtool">
+				<option value="line">Line</option>
+				<option value="rect">Rectangle</option>
+				<option value="pencil">Pencil</option>
+			</select></label></p>
+
+			<div id="container" title="This is where you can draw your UI as a mockup of the final game." class="target">
+			  <canvas id="imageView" width="600" height="500" style="background:#fff;">
+				<p>Unfortunately, your browser is currently unsupported by our web 
+				application.  We are sorry for the inconvenience. Please use one of the 
+				supported browsers listed below, or draw the image you want using an 
+				offline tool.</p>
+				<p>Supported browsers: <a href="http://www.opera.com">Opera</a>, <a 
+				  href="http://www.mozilla.com">Firefox</a>, <a 
+				  href="http://www.apple.com/safari">Safari</a>, and <a 
+				  href="http://www.konqueror.org">Konqueror</a>.</p>
+			  </canvas>
+			</div>
+			<script type="text/javascript" src="js/paintingapp.js"></script>
+		</article> <!-- .post 1 -->
+        
+        <hr /> <!-- Post seperator - Not the most optimal solution -->
+        
+        <article class="post">
+        
+            <h2 class="entry-title" id="HUD">Heads Up Display</h2>
+            <div class="entry-content" id="piHUD" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>
+                   The current list of user interface panels encompasses:
+                </p>				
+				<ul>
+					<li>Health/Armor: The player's current health and armor level.</li>
+					<li>Ammunition: The available ammunition for the currently active weapon, divided into ammunition available until a reload is required, and total ammunition available, where appropriate.</li>
+					<li>Radar: A small circular radar indicating the locations of nearby Zombies.  Other points of interest, e.g. stores, airdrop locations, active and inactive traps are also marked.  Blips are color-coded to ensure that players can easily distinguish them. </li>
+					<li>Map: A small scale map of the entire level.  Similar to the radar, it has current location, stores, taxicabs, and active traps and events marked with color coded symbols. </li>
+					<li>Cash/Reputation: The player's current cash balance and their respect level. </li>
+					<li>Alert history: A log of recent messages received through the alert panel (see below). </li>
+				</ul>
+				<p>Other panels may be added as needed.</p>
+				
+            </div> <!-- .entry-content -->
+        </article> <!-- .post 2 -->
+		 <hr /> <!-- Post seperator - Not the most optimal solution -->
+		<article class="post">        
+            <h2 class="entry-title" id="menus">Menus</h2>
+            <div class="entry-content" id="piMenus" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>
+                   ...
+                </p>
+				<p>
+					<ul>
+						<li>Title screen/main menu.</li>
+						<li>Options menu.</li>
+						<li>Load menu</li>
+						<li>Save menu</li>
+						<li>Credits</li>
+						<li>Character select:  Allows the player to select and name a character for a new game.</li>
+						<li>Level select: Allows the player to select an area in which to hunt zombies.  Availability of levels depends on community status.</li>
+						<li>Equipment store: Allows the player to buy new weapons and equipment as well as replenish ammunition in exchange for cash.</li>
+						<li>Statistics: Displays statistics on the current character's achievements.</li>
+					</ul>
+				</p>
+            </div> <!-- .entry-content -->
+        </article> <!-- .post 2 -->
+    </div> <!-- #content -->
+    
+    <aside id="sidebar" role="complementary">
+    
+        <aside class="widget">
+            <h3>Quick Links</h3>
+            
+            <ul>
+                <li><a href="#UIOverview">UI Overview</a></li>
+                <li><a href="#HUD">Heads Up Display</a></li>
+				<li><a href="#menus">Menus</a></li>
+            </ul>
+        </aside> <!-- .widget -->
+        
+       
+    </aside> <!-- #sidebar -->
+    
+</div> <!-- #main -->
+    
+    <footer id="footer">
+        <!-- You're free to remove the credit link to Jayj.dk in the footer, but please, please leave it there :) -->
+        <p>
+            Copyright &copy; 2011 <a href="#">Death Event</a>
+            <span class="sep">|</span>
+        </p>
+    </footer> <!-- #footer -->
+    
+    <div class="clear"></div>
+
+</div> <!-- #wrapper -->
+
+	<!-- JavaScript at the bottom for fast page loading -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+	<script>
+	  getMyPlayerInterface();
+	</script>
+</body>
+</html>

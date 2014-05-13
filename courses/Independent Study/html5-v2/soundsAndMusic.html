@@ -1,0 +1,305 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8" />
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title></title>
+
+    <meta name="description" content="" />
+    
+     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="style.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold" rel="stylesheet" /> <!-- Load Droid Serif from Google Fonts -->
+    
+    <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+    	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries -->
+    <script src="js/modernizr-1.7.min.js"></script>
+    <script src="js/respond.min.js"></script>
+	<script>   
+		var db = null;
+		function html5_storage_support() {
+			try {
+				return 'localStorage' in window && window['localStorage'] == null;
+			} catch (e) {
+				return false;
+			}
+		}
+		//CHECK TO SEE IF THE BROWSER IS COMPATIBLE 
+		if (!html5_storage_support) {
+			alert("This Might Be a Good Time to Upgrade Your Browser or Turn On Jeavascript");
+		} else {
+		  
+			//OPEN AND OR CREATE THE DATABASE ON THE USERS MACHINE
+			db = openDatabase("MyGameStory", "1", "My Game Story", 100000);
+		  
+			function storeMyContact(id) {
+				var snmOverview = document.getElementById('snmOverview').innerHTML;
+				var snmPlayer = document.getElementById('snmPlayer').innerHTML;
+				var snmWeapons = document.getElementById('snmWeapons').innerHTML;
+				var snmEnemies = document.getElementById('snmEnemies').innerHTML;
+				var snmEnvironment = document.getElementById('snmEnvironment').innerHTML;
+				var snmUI = document.getElementById('snmUI').innerHTML;
+				var snmMusic = document.getElementById('snmMusic').innerHTML;
+				var snmTotal = document.getElementById('snmTotal').innerHTML;
+				
+				localStorage.setItem('SNMOverview',snmOverview);
+				localStorage.setItem('SNMPlayer',snmPlayer);
+				localStorage.setItem('SNMWeapons',snmWeapons);
+				localStorage.setItem('SNMEnemies',snmEnemies);
+				localStorage.setItem('SNMEnvironment',snmEnvironment);
+				localStorage.setItem('SNMUI',snmUI);
+				localStorage.setItem('SNMMusic',snmMusic);
+				localStorage.setItem('SNMTotal',snmTotal);
+				
+			}
+			//GET STORED VALUES FROM KEYS TO DEFINE JAVASCRIPT VALUES OR DEFINE IF THEY DO NOT EXIST
+			function getMySoundAndMusic() {
+				if ( localStorage.getItem('SNMOverview')) {
+					var snmOverview = localStorage.getItem('SNMOverview');
+					var snmPlayer = localStorage.getItem('SNMPlayer');
+					var snmWeapons = localStorage.getItem('SNMWeapons');
+					var snmEnemies = localStorage.getItem('SNMEnemies');
+					var snmEnvironment = localStorage.getItem('SNMEnvironment');
+					var snmUI = localStorage.getItem('SNMUI');
+					var snmMusic = localStorage.getItem('SNMMusic');
+					var snmTotal = localStorage.getItem('SNMTotal');
+					
+				}
+				else {
+					var snmOverview = document.getElementById('snmOverview').innerHTML;
+					var snmPlayer = document.getElementById('snmPlayer').innerHTML;
+					var snmWeapons = document.getElementById('snmWeapons').innerHTML;
+					var snmEnemies = document.getElementById('snmEnemies').innerHTML;
+					var snmEnvironment = document.getElementById('snmEnvironment').innerHTML;
+					var snmUI = document.getElementById('snmUI').innerHTML;
+					var snmMusic = document.getElementById('snmMusic').innerHTML;
+					var snmTotal = document.getElementById('snmTotal').innerHTML;
+					
+				}
+				document.getElementById('snmOverview').innerHTML = snmOverview;
+				document.getElementById('snmPlayer').innerHTML = snmPlayer;
+				document.getElementById('snmWeapons').innerHTML = snmWeapons;
+				document.getElementById('snmEnemies').innerHTML = snmEnemies;
+				document.getElementById('snmEnvironment').innerHTML = snmEnvironment;
+				document.getElementById('snmUI').innerHTML = snmUI;
+				document.getElementById('snmMusic').innerHTML = snmMusic;
+				document.getElementById('snmTotal').innerHTML = snmTotal;
+				
+			}
+			//CLEAR ALL DATA
+			function clearLocal() {
+				clear: localStorage.clear(); 
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header id="header" class="clearfix" role="banner">
+    
+        <hgroup>
+            <h1 id="site-title"><a href="index.html">Death Event</a></h1>
+            <h2 id="site-description">Game Design Document</h2>
+        </hgroup>
+    
+    </header> <!-- #header -->
+
+<div id="main" class="clearfix">
+
+	<!-- Navigation -->
+    <nav id="menu" class="clearfix" role="navigation">
+        <ul> 
+            <li>
+				<a href="index.html">Game Concept</a>
+				<ul>
+                    <li><a href="index.html#Intro">Introduction</a></li>
+                    <li><a href="index.html#Desc">Description</a></li>
+                </ul>
+			</li>
+            <li>
+                <a href="story.html">Story</a>
+                <ul>
+                    <li><a href="story.html#Story">The incident</a></li>
+                    <li><a href="story.html#Setting">Setting</a></li>
+                </ul>
+            </li>
+			<li class="current">
+                <a href="soundsAndMusic.html">Sounds and Music</a>
+                <ul>
+                    <li><a href="playerInterface.html">Player Interface</a></li>
+					<li><a href="visualArt.html">Visual Art</a></li>
+					<li><a href="gameMechanics.html">Game Mechanics</a></li>
+					<li><a href="technicalAnalysis.html">Technical Analysis</a></li>
+					<li><a href="marketAnalysis.html">Market Analysis</a></li>
+					<li><a href="costAnalysis.html">Cost Analysis</a></li>
+                </ul>
+            </li>
+			
+			
+        </ul>
+    </nav> <!-- #nav -->
+    
+    <!-- Show a "Please Upgrade" box to both IE7 and IE6 users (Edit to IE 6 if you just want to show it to IE6 users) - jQuery will load the content from js/ie.html into the div -->
+    
+    <!--[if lte IE 7]>
+        <div class="ie warning"></div>
+    <![endif]-->
+    
+    <div id="content" role="main">
+    
+        <article class="post">
+        
+            <h2 class="entry-title" id="Intro">Sound Assets</h2>
+            <div class="entry-content">
+                <p></p>
+				<h4 class="entry-title" id="OverviewSE">Overview</h4>
+				<div class="entry-content" id="snmOverview" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+                <p></p>
+				<h4 class="entry-title" id="PlayerSE">Player Sound Effects</h4>
+				<div class="entry-content" id="snmPlayer" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul>
+						<li>Run</li>
+						<li>Walk</li>
+						<li>Move when crouched</li>
+						<li>Jump</li>
+						<li>Hurt x 5</li>
+						<li>Hurt badly x 3</li>
+						<li>Low on health</li>
+						<li>Death</li>
+						<li>Collect health</li>
+						<li>Collect armor</li>
+					</ul>
+					<p>Estimate ? characters.</p>
+					<p>Total = 16 * ? = ?</p>
+				</div> 
+                <p></p>
+				<h4 class="entry-title" id="WeaponsSE">Weapons</h4>
+				<div class="entry-content" id="snmWeapons" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul>
+						<li>Pick up</li>
+						<li>Pick up ammo</li>
+						<li>Select</li>
+						<li>Fire</li>
+						<li>Out of ammo fire</li>
+						<li>Reload</li>
+					</ul>
+					<p>One set for each weapon (duplicates possible).</p>
+					<p>Estimate 10 weapons.</p>
+					<p>Total = ? * ? = ?</p>
+				</div>
+				<p></p>
+				<h4 class="entry-title" id="EnemiesSE">Walkers and Dark Hunters</h4>
+				<div class="entry-content" id="snmEnemies" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul>
+						<li>Idle x 3</li>
+						<li>Alerted</li>
+						<li>Hostile</li>
+						<li>Hurt x 5</li>
+						<li>Hurt badly x 3</li>
+						<li>Low on health</li>
+						<li>Death</li>
+					</ul>
+					<p>Estimate ? sets.</p>
+					<p>Total = ? * ? = ?</p>
+				</div>
+				<p></p>
+				<h4 class="entry-title" id="EnvironmentSE">Environment</h4>
+				<div class="entry-content" id="snmEnvironment" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul>
+						<li>Misc x 25</li>						
+					</ul>
+					<p>Total = 25</p>
+				</div>
+				<p></p>
+				<h4 class="entry-title" id="UISE">UI</h4>
+				<div class="entry-content" id="snmUI" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul>
+						<li>Mouse over</li>
+						<li>Activate</li>
+						<li>Buy x 5</li>
+					</ul>
+					<p>Total = 7</p>
+				</div>
+				<p></p>
+				<h4 class="entry-title" id="MusicSE">Music</h4>
+				<div class="entry-content" id="snmMusic" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul>
+						<li>Background x 5</li>	
+						<li>Title theme</li>
+					</ul>
+					<p>Total = 6</p>
+				</div>
+				<p></p>
+				<h4 class="entry-title" id="TotalSE">Total sound requirement</h4>
+				<div class="entry-content" id="snmTotal" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul>
+						<li>Approx ? sound effects.</li>	
+						<li>Approx ? tracks of music.</li>
+					</ul>
+					<p>Total = 6</p>
+				</div>
+            </div> <!-- .entry-content -->       
+        </article> <!-- .post 1 -->
+        
+        <hr /> <!-- Post seperator - Not the most optimal solution -->
+		<div><a onclick="clearLocal(); getMyContact();" href="javascript:void(0);">Clear All Of My Data</a></div>
+    
+    </div> <!-- #content -->
+    
+    <aside id="sidebar" role="complementary">
+    
+        <aside class="widget">
+            <h3>Quick Links</h3>
+            
+            <ul>
+                <li><a href="#OverviewSE">Overview</a></li>
+                <li><a href="#PlayerSE">Player Sound Effects</a></li>
+				<li><a href="#WeaponsSE">Weapons</a></li>
+				<li><a href="#EnemiesSE">Walkers and Dark Hunters</a></li>
+                <li><a href="#EnvironmentSE">Environment</a></li>
+				<li><a href="#UISE">UI</a></li>
+                <li><a href="#MusicSE">Music</a></li>
+				<li><a href="#TotalSE">Total sound requirement</a></li>
+            </ul>
+        </aside> <!-- .widget -->
+        
+       
+    </aside> <!-- #sidebar -->
+    
+</div> <!-- #main -->
+    
+    <footer id="footer">
+        <!-- You're free to remove the credit link to Jayj.dk in the footer, but please, please leave it there :) -->
+        <p>
+            Copyright &copy; 2011 <a href="#">Death Event</a>
+            <span class="sep">|</span>
+        </p>
+    </footer> <!-- #footer -->
+    
+    <div class="clear"></div>
+
+</div> <!-- #wrapper -->
+
+	<!-- JavaScript at the bottom for fast page loading -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+	<script>
+	  getMySoundAndMusic();
+	</script>
+</body>
+</html>

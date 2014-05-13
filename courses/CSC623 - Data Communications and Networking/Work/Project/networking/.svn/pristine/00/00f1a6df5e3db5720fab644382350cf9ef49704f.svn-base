@@ -1,0 +1,166 @@
+package ftp.gui.listener;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
+
+import javax.swing.JTextField;
+
+import sun.management.FileSystem;
+
+import ftp.client.FtpCmdSession;
+import ftp.client.FtpConnector;
+import ftp.file.LocalDirectory;
+import ftp.file.RemoteDirectory;
+import ftp.gui.component.FileTable;
+import ftp.message.FtpLogger;
+import ftp.message.JTextAreaOutput;
+
+public class DirFileTableListener implements MouseMotionListener, MouseListener {
+
+	private JTextAreaOutput log = FtpLogger.getLog();
+	private FileTable locTable;
+	private FileTable remTable;
+	private JTextField locText;
+	private JTextField remText;
+	private ArrayList<String> fileLists;
+	private boolean isLocalDragged;
+	private boolean isRemoteDragged;
+	private boolean readyForRelease;
+
+	public DirFileTableListener(FileTable locTable, FileTable remTable,
+			JTextField locText, JTextField remText) {
+		this.locTable = locTable;
+		this.remTable = remTable;
+		this.locText = locText;
+		this.remText = remText;
+		fileLists = new ArrayList<String>();
+	}
+
+	public ArrayList<String> getFileLists() {
+		return fileLists;
+	}
+
+	// @Override
+	public void mouseDragged(MouseEvent e) {
+		if (e.getSource() == locTable) {
+			isLocalDragged = true;
+			isRemoteDragged = false;
+		} else if (e.getSource() == remTable) {
+			isLocalDragged = false;
+			isRemoteDragged = true;
+		}
+		fileLists.clear();
+		if (isLocalDragged) {
+			int rowCount = locTable.getSelectedRowCount();
+			for (int i = 0; i < rowCount; i++) {
+				int[] rows = locTable.getSelectedRows();
+				String sourceFile = (String) locTable.getValueAt(rows[i], 1);
+				fileLists.add(sourceFile);
+			}
+		} else if (isRemoteDragged) {
+			int rowCount = remTable.getSelectedRowCount();
+			for (int i = 0; i < rowCount; i++) {
+				int[] rows = remTable.getSelectedRows();
+				String sourceFile = (String) remTable.getValueAt(rows[i], 1);
+				fileLists.add(sourceFile);
+			}
+		}
+
+	}
+
+
+
+	/*
+	 * action listener for double clicking the directory on the table the
+	 * current working directory changes
+	 */
+	public void mouseClicked(MouseEvent e) {
+		if (e.getClickCount() == 2) {
+			if (e.getSource() == locTable) {
+				String curDir = locText.getText();
+				int row = locTable.rowAtPoint(e.getPoint());
+				curDir = LocalDirectory.winFormat(curDir);
+				String newDir = curDir + (String) locTable.getValueAt(row, 1);
+				curDir = LocalDirectory.cwd(newDir);
+			} else if (e.getSource() == remTable) {
+				String curDir = remText.getText();
+				int row = remTable.rowAtPoint(e.getPoint());
+				curDir = LocalDirectory.unixFormat(curDir);
+				String newDir = curDir + (String) remTable.getValueAt(row, 1);
+				curDir = RemoteDirectory.cwd(newDir);
+			}
+		}
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		if (isLocalDragged) {
+			if (e.getSource() == remTable) {
+				readyForRelease = true;
+			} else {
+				readyForRelease = false;
+			}
+		} else if (isRemoteDragged) {
+			if (e.getSource() == locTable) {
+				readyForRelease = true;
+			} else {
+				readyForRelease = false;
+
+			}
+		}
+
+	}
+
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		if (readyForRelease) {
+			if (isLocalDragged) {
+				// perform upload
+				FtpConnector conn = FtpCmdSession.getConnSession();
+				if (conn == null) {
+					log.error("You should connect first");
+				} else {
+					String sourceDir = locText.getText();
+					for (String sourceFile : fileLists) {
+						conn.upload(sourceFile, sourceDir);
+					}
+				}
+			} else if (isRemoteDragged) {
+				// perform download
+				System.out.println("download is performed");
+				FtpConnector conn = FtpCmdSession.getConnSession();
+				if (conn == null) {
+					log.error("You should connect first");
+				} else {
+					String destDir = locText.getText();
+					for (String sourceFile : fileLists) {
+						conn.download(sourceFile, destDir);
+					}
+				}
+			}
+
+		}
+		readyForRelease = false;
+		fileLists.clear();
+	}
+	
+	//not support
+	public void mouseExited(MouseEvent e) {	
+
+	}
+
+	//not support
+	public void mousePressed(MouseEvent e) {
+		
+	}
+	
+	//not support
+	public void mouseMoved(MouseEvent e) {
+
+	}
+}
