@@ -5,7 +5,10 @@
 .metadata
 ReadMe.docx
 ~$ReadMe.docx
+<<<<<<< HEAD
 ReadMe.doc
+=======
+>>>>>>> ed797056ed62cb40043a0932ba0c00cc83075e6e
 ~$ReadMe.doc
 ~WRL0003.tmp
 myWebsite/.settings

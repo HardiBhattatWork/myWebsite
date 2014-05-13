@@ -1,0 +1,8 @@
+package ftp.gui;
+
+import javax.swing.JList;
+import javax.swing.JTextField;
+
+public interface CommandInterface {
+	 public void processEvent(FileTable  locPanel, FileTable remPanel, JTextField locText, JTextField remText);
+}

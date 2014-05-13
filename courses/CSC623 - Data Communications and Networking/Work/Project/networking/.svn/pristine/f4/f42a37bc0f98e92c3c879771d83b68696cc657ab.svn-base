@@ -1,0 +1,97 @@
+/**
+ * Description: This class is used to send command to server
+ * @author Guojun Zhang
+ **/
+package ftp.client;
+
+import java.io.*;
+
+import ftp.message.FtpLogger;
+import ftp.message.JTextAreaOutput;
+
+public class FtpCmd {
+
+	private JTextAreaOutput log = FtpLogger.getLog();
+	private PrintWriter cmdOut;
+
+	public FtpCmd(PrintWriter cmdOut) {
+		this.cmdOut = cmdOut;
+	}
+
+	/**
+	 * This command will normally be the first command transmitted by the user
+	 * after the cmd connections are made
+	 * server will reply 331 after correct user was authorized
+	 */
+	public void user(String user) {
+		log.command("USER " + user);
+		cmdOut.println("USER " + user);
+	}
+
+	/**
+	 *  The argument field is the user's password.
+	 *  This command must be immediately preceded by the user name command
+	 *  server will reply 230 after correct password was authorized
+	 */ 
+	public void pass(String pwd) {
+		log.command("PASS " + "******");
+		cmdOut.println("PASS " + pwd);
+	}
+
+	/**
+	 * This command allows the user to work with a different directory or
+	 * dataset for file storage or retrieval without altering his login or
+	 * accounting information. The argument is a pathname specifying a directory
+	 */
+	public void cwd(String path) {
+		log.command("CWD " + path);
+		cmdOut.println("CWD " + path);
+	}
+
+	/**
+	 *  This command causes the name of the current working
+	 *  directory to be returned through the cmd socket
+	 */
+	public void pwd(){
+		log.command("PWD");
+		cmdOut.println("PWD");
+	}
+
+	/**
+	 * This command causes a list to be sent from
+	 * the server to the client through the data socket
+	 */
+	public void list() {
+		log.command("LIST");
+		cmdOut.println("LIST");
+	}
+
+	/**
+	 * This command causes the server to transfer a 
+	 * copy of the file, specified in the pathname
+	 */
+	public void retr(String pathname){
+		log.command("RETR " + pathname);
+		cmdOut.println("RETR " + pathname);
+	}
+	
+	/**
+	 * This command causes the server-DTP to accept the data
+	 * transferred via the data connection and to store 
+	 * the data as a file at the server site. 
+	 */
+	public void stor(String pathname){
+		log.command("STOR " + pathname);
+		cmdOut.println("STOR " + pathname);
+	}
+	
+	/**
+	 *  This command terminates a USER and if file transfer is not in progress,
+	 *  the server closes the control connection.
+	 */
+	public void quit() {
+		log.command("QUIT");
+		cmdOut.println("QUIT");
+	}
+
+}

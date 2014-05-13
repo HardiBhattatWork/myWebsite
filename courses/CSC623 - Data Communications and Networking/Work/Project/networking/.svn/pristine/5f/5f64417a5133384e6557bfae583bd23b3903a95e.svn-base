@@ -1,0 +1,33 @@
+/**
+ * This class starts main thread for ftp server.
+ * makes it starting to listening on CMDSOCKET_PORT
+ * @author: Yikuan Zheng
+ **/
+package ftp.server;
+
+import java.io.*;
+import java.net.*;
+
+import ftp.config.Settings;
+
+public class FtpServer implements Settings {
+
+	public void startServer() {
+		try {
+			ServerSocket listener = new ServerSocket(CMDSOCKET_PORT);
+
+			while (true) {
+				Socket s = listener.accept();
+				new ServerWorker(s);
+			}
+		} catch (IOException ioe) {
+			System.out.println("ServerSocket error: " + ioe);
+		}
+	}
+
+	public static void main(String[] args) {
+		new FtpServer().startServer();
+
+
+	}
+}

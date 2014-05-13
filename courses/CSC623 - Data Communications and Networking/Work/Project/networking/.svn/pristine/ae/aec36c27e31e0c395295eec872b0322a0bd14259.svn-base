@@ -1,0 +1,25 @@
+/**
+ * This class encapsulates PrintWriter and is
+ * used by ftp server for sending command response to client
+ * @author: Jing Zhao
+ **/
+package ftp.io;
+
+import java.io.PrintWriter;
+
+public class CmdSocketWriter {
+	
+	private PrintWriter out;
+	
+	public CmdSocketWriter(PrintWriter out){
+		this.out = out;
+	}
+	
+	public void write(String arg){
+		out.println(arg);
+		out.flush();
+		
+	}
+	
+
+}

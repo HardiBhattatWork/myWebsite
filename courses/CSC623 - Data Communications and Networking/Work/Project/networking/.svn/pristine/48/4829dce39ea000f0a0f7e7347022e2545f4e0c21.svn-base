@@ -1,0 +1,27 @@
+package ftp.gui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JTextField;
+
+public class buttonHandler implements ActionListener {
+	// remote file display panel
+	private FileTable remPanel;
+	private JTextField remText;
+	// local file display panel
+	private FileTable locPanel;
+	private JTextField locText;
+
+	public buttonHandler(FileTable locTable, FileTable remTable, JTextField locText, JTextField remText) {
+		this.locPanel = locTable;
+		this.remPanel = remTable;
+		this.locText = locText;
+		this.remText = remText;
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		CommandInterface CommandObj = (CommandInterface) e.getSource();
+		System.out.println(e.getSource());
+		CommandObj.processEvent(locPanel, remPanel, locText, remText);
+	}
+}

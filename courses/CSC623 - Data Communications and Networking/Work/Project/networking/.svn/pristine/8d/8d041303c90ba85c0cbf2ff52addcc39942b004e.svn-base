@@ -1,0 +1,46 @@
+/**
+ * Class write message into JTextArea on client gui
+ * @author Jing Zhao
+ **/
+package ftp.message;
+
+import java.util.Scanner;
+
+import javax.swing.JTextArea;
+
+import ftp.config.Settings;
+
+public class JTextAreaOutput implements Settings{
+	
+	private JTextArea jta;
+	
+	public JTextAreaOutput(JTextArea jta){
+		this.jta = jta;
+	}
+	
+	public void write(String msg){
+		jta.append(msg);
+		jta.append("\n");
+	}
+	
+	public void status(String msg){
+		write(STATUS + msg);
+	}
+	
+	public void error(String msg){
+		write(ERROR + msg);
+	}
+	
+	public void command(String msg){
+		write(COMMAND + msg);
+	}
+	
+	public void response(String msg){	
+		Scanner scanner = new Scanner(msg);
+		while(scanner.hasNext()){
+			write(RESPONSE + scanner.nextLine());
+		}
+		
+	}
+
+}

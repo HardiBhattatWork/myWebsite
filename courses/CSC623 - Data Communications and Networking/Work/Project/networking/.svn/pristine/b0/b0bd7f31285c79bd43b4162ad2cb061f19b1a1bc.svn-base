@@ -1,0 +1,174 @@
+/**
+ * This class is used to set up socket connection 
+ * with ftp server and complete the operations like
+ * change server's working directory, list files, download, upload ...
+ * @author Guojun Zhang
+ **/
+package ftp.client;
+
+import java.net.*;
+import java.util.ArrayList;
+import java.io.*;
+
+import ftp.config.Settings;
+import ftp.io.DataAccepter;
+import ftp.message.FtpLogger;
+import ftp.message.JTextAreaOutput;
+
+public class FtpConnector implements Settings {
+
+	private JTextAreaOutput log = FtpLogger.getLog();
+
+	private String serverHostname;
+	private int port;
+	private String user;
+	private String pwd;
+	private Socket cmdSocket;
+	private PrintWriter cmdOut;
+	private BufferedReader cmdReader;
+
+	private FtpCmd cmd;
+	private SrvResponseAccepter rspAccepter;
+	private StringBuffer srvResponse;
+
+	public FtpConnector(String hostname, String user, String pwd)
+			throws UnknownHostException, IOException, InterruptedException {
+		this(hostname, CMDSOCKET_PORT, user, pwd);
+	}
+
+	public FtpConnector(String hostname, int port, String user, String pwd)
+			throws UnknownHostException, IOException, InterruptedException {
+
+		this.serverHostname = hostname;
+		this.port = port;
+		this.user = user;
+		this.pwd = pwd;
+		srvResponse = new StringBuffer();
+
+		// establish socket connection
+		cmdSocket = new Socket(serverHostname, port);
+		cmdOut = new PrintWriter(cmdSocket.getOutputStream(), true);
+		cmdReader = new BufferedReader(new InputStreamReader(cmdSocket
+				.getInputStream()));
+		Thread.sleep(SLEEP_MS);
+		log();
+		// start a thread to accept the command response from ftp server
+		rspAccepter = new SrvResponseAccepter(cmdReader, srvResponse);
+		rspAccepter.start();
+
+		cmd = new FtpCmd(cmdOut);
+
+	}
+
+	/*
+	 * returns command response getting from ftp server
+	 */
+	public String getSrvResponse() {
+		return srvResponse.toString();
+	}
+
+	/*
+	 * clears the response buffer
+	 */
+	public void clearSrvResponse() {
+		srvResponse.delete(0, srvResponse.length() + 1);
+	}
+
+	/*
+	 * authenticates user and password with ftp server returns code that is
+	 * returned by the ftp server
+	 */
+	public int connect() throws InterruptedException {
+
+		// 220 Service ready for new user.
+		boolean userSent = false;
+		for (int i = 0; i < NUM_OF_TIMES && !userSent; i++) {
+			if (rspAccepter.getReplyCode() == 220) {
+				cmd.user(user);
+				Thread.sleep(SLEEP_MS);
+				log();
+				userSent = true;
+			}
+
+		}
+		// 331 User name okay, need password.
+		if (userSent) {
+			boolean pwdSent = false;
+			for (int i = 0; i < NUM_OF_TIMES && !pwdSent; i++) {
+				if (rspAccepter.getReplyCode() == 331) {
+					cmd.pass(pwd);
+					Thread.sleep(SLEEP_MS);
+					log();
+					pwdSent = true;
+				}
+
+			}
+			if (!pwdSent) {
+				log
+						.error("Failed to send command PASS. No response from server");
+			}
+		} else {
+			log.error("Failed to send command USER. No response from server");
+		}
+		return rspAccepter.getReplyCode();
+	}
+
+	/*
+	 * Gets the current working directory of server
+	 */
+	public String pwd() throws InterruptedException {
+		cmd.pwd();
+		Thread.sleep(SLEEP_MS);
+		int startIndex = srvResponse.indexOf("/");
+		String path = srvResponse.substring(startIndex);
+		log();
+		return path;
+	}
+
+	/*
+	 * lists the sub-directories and/or files under current working directory
+	 */
+	public File[] list() throws InterruptedException, IOException {
+		File[] files = null;
+		// 257 current path is returned
+
+		DataAccepter da = new DataAccepter();
+		da.start();
+		cmd.list();
+		Thread.sleep(SLEEP_MS);
+		// 250 Requested file action okay, completed.
+		if (rspAccepter.getReplyCode() == 250) {
+			ArrayList<File> fileList = da.getFiles();
+			int size = fileList.size();
+			files = new File[size];
+			for (int i = 0; i < size; i++) {
+				files[i] = fileList.get(i);
+			}
+			da.stopThread();
+		}
+			log();
+		return files;
+
+	}
+
+	/*
+	 * changes the current working directory of server
+	 */
+	public boolean cwd(String newPath) throws InterruptedException {
+		cmd.cwd(newPath);
+		Thread.sleep(SLEEP_MS);
+		log();
+		//250 current directory is changed to
+		return (rspAccepter.getReplyCode() == 250);
+		
+	}
+
+	/*
+	 * write the server response to the client gui then clear the response
+	 * string buffer
+	 */
+	private void log() {
+		log.response(srvResponse.toString());
+		clearSrvResponse();
+	}
+}

@@ -1,0 +1,18 @@
+package ftp.io;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+public class DataSocketInputStream {
+
+	private InputStream dataIn;
+
+	public DataSocketInputStream(InputStream in){
+		this.dataIn = in;
+	}
+	
+	public int read() throws IOException, ClassNotFoundException {
+		return dataIn.read();
+	}
+
+}

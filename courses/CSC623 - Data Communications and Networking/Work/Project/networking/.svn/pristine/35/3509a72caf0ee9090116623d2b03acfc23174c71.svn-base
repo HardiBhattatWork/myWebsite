@@ -1,0 +1,23 @@
+package ftp.message;
+
+import javax.swing.JTextArea;
+
+import ftp.config.Settings;
+
+public class FtpLogger implements Settings{
+
+	private static JTextAreaOutput log;
+	
+	public static JTextAreaOutput getLog(){
+		return log;
+	}
+	
+
+	public static void initLog(JTextArea jta){
+		if(log == null){
+			log = new JTextAreaOutput(jta);
+		}
+	}
+	
+	
+}

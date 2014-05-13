@@ -1,0 +1,41 @@
+/**
+ * Description: Class action listener for the connection button on GUI.
+ * @author Jing Zhao
+ **/
+package ftp.gui.listener;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import ftp.file.LocalDirectory;
+import ftp.file.RemoteDirectory;
+
+public class DirTextFieldListener implements ActionListener{
+
+	private boolean isLocal;
+
+	/**
+	 * constructor for listener
+	 * @param isLocal
+	 */
+	public DirTextFieldListener(boolean isLocal) {
+		this.isLocal = isLocal;
+
+	}
+
+	/**
+	 * action listener for JTextField changes the current working directory when
+	 * user puts the new directory into JTextField and presses Enter.
+	 */
+	public void actionPerformed(ActionEvent e) {
+
+		String newDir = e.getActionCommand();
+		if (isLocal) {
+			LocalDirectory.cwd(newDir);
+		} else {
+			RemoteDirectory.cwd(newDir);
+		}
+	}
+
+
+
+}

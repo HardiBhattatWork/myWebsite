@@ -1,0 +1,208 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8" />
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title></title>
+
+    <meta name="description" content="" />
+    
+     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="style.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold" rel="stylesheet" /> <!-- Load Droid Serif from Google Fonts -->
+    
+    <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+    	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries -->
+    <script src="js/modernizr-1.7.min.js"></script>
+    <script src="js/respond.min.js"></script>
+	<script>   
+		var db = null;
+		function html5_storage_support() {
+			try {
+				return 'localStorage' in window && window['localStorage'] == null;
+			} catch (e) {
+				return false;
+			}
+		}
+		//CHECK TO SEE IF THE BROWSER IS COMPATIBLE 
+		if (!html5_storage_support) {
+			alert("This Might Be a Good Time to Upgrade Your Browser or Turn On Jeavascript");
+		} else {
+		  
+			//OPEN AND OR CREATE THE DATABASE ON THE USERS MACHINE
+			db = openDatabase("MyGameStory", "1", "My Game Story", 100000);
+		  
+			function storeMyContact(id) {
+				var incident = document.getElementById('incident').innerHTML;
+				var setting = document.getElementById('setting').innerHTML;
+				localStorage.setItem('mcIncident',incident);
+				localStorage.setItem('mcSetting',setting);
+			}
+			//GET STORED VALUES FROM KEYS TO DEFINE JAVASCRIPT VALUES OR DEFINE IF THEY DO NOT EXIST
+			function getMyGameStory() {
+				if ( localStorage.getItem('mcIncident')) {
+					var incident = localStorage.getItem('mcIncident');
+					var setting = localStorage.getItem('mcSetting');
+				}
+				else {
+					var incident = document.getElementById('incident').innerHTML;
+					var setting = document.getElementById('setting').innerHTML;
+				}
+				document.getElementById('incident').innerHTML = incident;
+				document.getElementById('setting').innerHTML = setting;
+			}
+			//CLEAR ALL DATA
+			function clearLocal() {
+				clear: localStorage.clear(); 
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header id="header" class="clearfix" role="banner">
+    
+        <hgroup>
+            <h1 id="site-title"><a href="index.html">Death Event</a></h1>
+            <h2 id="site-description">Game Design Document</h2>
+        </hgroup>
+    
+    </header> <!-- #header -->
+
+<div id="main" class="clearfix">
+
+	<!-- Navigation -->
+    <nav id="menu" class="clearfix" role="navigation">
+        <ul> 
+            <li>
+				<a href="index.html">Game Concept</a>
+				<ul>
+                    <li><a href="index.html#Intro">Introduction</a></li>
+                    <li><a href="index.html#Desc">Description</a></li>
+                </ul>
+			</li>
+            <li class="current">
+                <a href="story.html">Story</a>
+                <ul>
+                    <li><a href="story.html#Story">The incident</a></li>
+                    <li><a href="story.html#Setting">Setting</a></li>
+                </ul>
+            </li>
+			<li>
+                <a href="gameMechanics.html">Game Mechanics</a>
+                <ul>
+                    <li><a href="playerInterface.html">Player Interface</a></li>
+					<li><a href="visualArt.html">Visual Art</a></li>
+					<li><a href="soundsAndMusic.html">Sounds and Music</a></li>
+					<li><a href="technicalAnalysis.html">Technical Analysis</a></li>
+					<li><a href="gameMechanics.html">Game Mechanics</a></li>
+					<li><a href="costAnalysis.html">Cost Analysis</a></li>
+                </ul>
+            </li>
+			
+			
+        </ul>
+    </nav> <!-- #nav -->
+    
+    <!-- Show a "Please Upgrade" box to both IE7 and IE6 users (Edit to IE 6 if you just want to show it to IE6 users) - jQuery will load the content from js/ie.html into the div -->
+    
+    <!--[if lte IE 7]>
+        <div class="ie warning"></div>
+    <![endif]-->
+    
+    <div id="content" role="main">
+    
+        <article class="post">
+        
+            <h2 class="entry-title" id="Story">The incident and its effects...</h2>
+            
+            <figure>
+                <a href="#"><img src="images/thumbnail.jpg" alt="Post thumbnail" class="thumbnail alignleft" /></a>
+            </figure>
+            
+            <div id="incident" class="entry-content" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>
+                    The year is 2012, as the world's climate becomes increasingly inhospitable. Mother Nature in her last effort to bring balance to the world, has unleashed an airborne contaminant to wipe out the cause of the imbalance. The Human race has become something other then what nature intended it to be.
+                </p>                
+                <p>
+                   It was a revelation discovered by a Natural Scientist [Anderson Smith], where he write in his book "Human kind, Mammal or Virus?". In his book he writes "It came to me when I tried to classify our species and I realized that we are not actually mammals. Every mammal on this planet instinctively develops a natural equilibrium with the surrounding environment but we humans do not. We move to an area and we multiply and multiply until every natural resource is consumed and the only way we can survive is to spread to another area. There is another organism on this planet that follows the same pattern, a virus. Human beings are a disease, a cancer of this planet. We are a plague and soon enough, Mother Nature will develop the cure".
+                </p>
+				<p>
+					And sure enough that revelation came true, however what Mother Nature did not anticipate were the advances in chemistry and biology that the human race had perfected. The contaminant negatively affected the human condition causing some to mutate some to die and then later come back to life and some to adapt. As time passed the ones who mutated grew fanged teeth and claws and congregated and cooperated with each other to create hunting parties in order to hunt and kill humans for food. These creatures were later classified as "Dark Hunters" as it was discovered later that their mutation caused them to be sensitive to the sunlight and thus were only capable of hunting at night. 
+				</p>
+				<p>
+					As they were already affected by the contaminant if they were bitten by the undead they would be unaffected, however if they were severely bitten enough to the brink to death they would turn into something more than just a Zombie. They would turn into a Zombie that was capable of mutating by assimilating its genetic structure with whatever living creature it consumed and adapt its physical structure accordingly. Categorized as a Zombie, this creature essentially consumed it's pray and adapting to its form and improving upon its strengths called a [Corruptor ]. 
+				</p>
+				<p>
+					The undead were greater in number then the Dark Hunters and humans. They were fuelled by their hunger, however they did not require it, hence they were capable of "living forever" and have a great amount of stamina to pursuit and hunt down its pray. These beings were later classified as "Walkers," they had enhanced sense of smell and hearing and are capable of distinguishing between Human pray and Dark Hunter pray. They also have an ability of alerting its brethren of where they have found pray through ultra sonic communication. 
+				</p>
+				<p>
+					Finally there were those who had enough of an immunity to fight off the contaminant, however not enough to escape it if they were scratched or bitten by either a "Dark Hunter" or a "Walker". You are one such human that is now trying to survive in a chaotic dying world. You have joined forces with other survivors to form a community who protects, manages and governs the survival and wellbeing of the group. With a mindset of shared success and sacrifice they carry on the everyday task of finding food and water for survival and occasionally braving the task of going into the city to find and retrieve supplies while making sure to avoid detection from either the Dark Hunters or the Walkers that amass in the city due to its potential for drawing in their pray. Due to a now "stupid " fact that the world runs on fossil fuel however no one can truly anticipate how much longer this can last as there will come a time when the group will be eventually forced to motorcade to other sites to find resources to survive. 
+				</p>
+            </div> <!-- .entry-content -->       
+        </article> <!-- .post 1 -->
+        
+        <hr /> <!-- Post seperator - Not the most optimal solution -->
+        
+        <article class="post">
+        
+            <h2 class="entry-title" id="GameSetting">Setting</h2>
+            <div id="Setting" class="entry-content" contenteditable="true" onkeyup="storeMyContact(this.id)">
+                <p>
+                    You wake up in a camp somewhere in the woods near the city of Philadelphia. Walking out to a group of people gathered to see off a team of 5 people assigned to retrieve supplies from the city. The mood is an encouragement. This group has been successful before and has provided the community with a wealth of necessary supplies, from canned goods to cloths, and from essential utilities such as stoves to ammunition for protection. Surviving has been smooth so far, however as night breaks and the groups return becomes less and less likely the mood of the camp turns to panic. As the camp leader was one among the gathering party they have no one left to look up to and lead them. 
+                </p>               
+            </div> <!-- .entry-content -->
+        </article> <!-- .post 2 -->
+		<hr /> <!-- Post seperator - Not the most optimal solution -->
+		<div><a onclick="clearLocal(); getMyContact();" href="javascript:void(0);">Clear All Of My Data</a></div>
+    </div> <!-- #content -->
+    
+    <aside id="sidebar" role="complementary">
+    
+        <aside class="widget">
+            <h3>Quick Links</h3>
+            
+            <ul>
+                <li><a href="#Story">The incident</a></li>
+				<li><a href="#GameSetting">Setting</a></li>
+            </ul>
+        </aside> <!-- .widget -->
+        
+       
+    </aside> <!-- #sidebar -->
+    
+</div> <!-- #main -->
+    
+    <footer id="footer">
+        <!-- You're free to remove the credit link to Jayj.dk in the footer, but please, please leave it there :) -->
+        <p>
+            Copyright &copy; 2011 <a href="#">Death Event</a>
+            <span class="sep">|</span>
+        </p>
+    </footer> <!-- #footer -->
+    
+    <div class="clear"></div>
+
+</div> <!-- #wrapper -->
+
+	<!-- JavaScript at the bottom for fast page loading -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+	<script>
+	  getMyGameStory();
+	</script>
+</body>
+</html>

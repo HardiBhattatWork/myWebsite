@@ -1,0 +1,56 @@
+package ftp.client;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import ftp.config.Settings;
+import ftp.file.RemoteDirectory;
+import ftp.io.DataSocketOutputStream;
+import ftp.message.FtpLogger;
+import ftp.message.JTextAreaOutput;
+
+public class DataSender extends Thread implements Settings {
+	private JTextAreaOutput log = FtpLogger.getLog();
+	private String sendFile;
+	private static Object lock = new Object();
+
+	public DataSender(String sendFile) {
+		this.sendFile = sendFile;
+
+	}
+
+	public void run() {
+		System.out.println("DataServer, thread start");
+		try {
+			Socket dSocket = null;
+			synchronized (lock) {
+				System.out.println("DataServer, in the synchronized block");
+				ServerSocket sSocket = new ServerSocket(DATASOCKET_PORT);
+				dSocket = sSocket.accept();
+				System.out.println("DataServer, data socket connected");
+				sSocket.close();
+			}
+			DataSocketOutputStream dataOut = new DataSocketOutputStream(dSocket
+					.getOutputStream());
+			FileInputStream fileReader = new FileInputStream(sendFile);
+			System.out.println("DataServer, send file " + sendFile);
+			byte[] data = new byte[BLOCK_SIZE];
+			while ((fileReader.read(data)) > 0) {
+				dataOut.write(data);
+			}
+			dataOut.flush();
+			dataOut.close();
+			log
+			.status("The file " + sendFile
+					+ " is uploaded to the server");
+			RemoteDirectory.refresh();
+
+		} catch (IOException e) {
+			log.error("exception occurs in data socket connection.");
+		}
+
+	}
+
+}

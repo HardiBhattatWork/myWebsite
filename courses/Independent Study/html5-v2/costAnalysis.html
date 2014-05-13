@@ -1,0 +1,420 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8" />
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title></title>
+
+    <meta name="description" content="" />
+    
+     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="style.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold" rel="stylesheet" /> <!-- Load Droid Serif from Google Fonts -->
+    
+    <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+    	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries -->
+    <script src="js/modernizr-1.7.min.js"></script>
+    <script src="js/respond.min.js"></script>
+	<script>   
+		var db = null;
+		function html5_storage_support() {
+			try {
+				return 'localStorage' in window && window['localStorage'] == null;
+			} catch (e) {
+				return false;
+			}
+		}
+		//CHECK TO SEE IF THE BROWSER IS COMPATIBLE 
+		if (!html5_storage_support) {
+			alert("This Might Be a Good Time to Upgrade Your Browser or Turn On Jeavascript");
+		} else {
+		  
+			//OPEN AND OR CREATE THE DATABASE ON THE USERS MACHINE
+			db = openDatabase("MyGameStory", "1", "My Game Story", 100000);
+		  
+			function storeMyContact(id) {
+				var caDevTeam = document.getElementById('caDevTeam').innerHTML;
+				var caHardware = document.getElementById('caHardware').innerHTML;
+				var caSpftware = document.getElementById('caSpftware').innerHTML;
+				var caSales = document.getElementById('caSales').innerHTML;
+				var caProjections = document.getElementById('caProjections').innerHTML;
+				
+				localStorage.setItem('CADevTeam',caDevTeam);
+				localStorage.setItem('CAHardware',caHardware);
+				localStorage.setItem('CASpftware',caSpftware);
+				localStorage.setItem('CASales',caSales);
+				localStorage.setItem('CAProjections',caProjections);
+				
+			}
+			//GET STORED VALUES FROM KEYS TO DEFINE JAVASCRIPT VALUES OR DEFINE IF THEY DO NOT EXIST
+			function getMyCostAnalysis() {
+				if ( localStorage.getItem('CADevTeam')) {
+					var caDevTeam = localStorage.getItem('CADevTeam');
+					var caHardware = localStorage.getItem('CAHardware');
+					var caSpftware = localStorage.getItem('CASpftware');
+					var caSales = localStorage.getItem('CASales');
+					var caProjections = localStorage.getItem('CAProjections');
+					
+				}
+				else {
+					var caDevTeam = document.getElementById('caDevTeam').innerHTML;
+					var caHardware = document.getElementById('caHardware').innerHTML;
+					var caSpftware = document.getElementById('caSpftware').innerHTML;
+					var caSales = document.getElementById('caSales').innerHTML;
+					var caProjections = document.getElementById('caProjections').innerHTML;
+					
+				}
+				document.getElementById('caDevTeam').innerHTML = caDevTeam;
+				document.getElementById('caHardware').innerHTML = caHardware;
+				document.getElementById('caSpftware').innerHTML = caSpftware;
+				document.getElementById('caSales').innerHTML = caSales;
+				document.getElementById('caProjections').innerHTML = caProjections;
+				
+			}
+			//CLEAR ALL DATA
+			function clearLocal() {
+				clear: localStorage.clear(); 
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header id="header" class="clearfix" role="banner">
+    
+        <hgroup>
+            <h1 id="site-title"><a href="index.html">Death Event</a></h1>
+            <h2 id="site-description">Game Design Document</h2>
+        </hgroup>
+    
+    </header> <!-- #header -->
+
+<div id="main" class="clearfix">
+
+	<!-- Navigation -->
+    <nav id="menu" class="clearfix" role="navigation">
+        <ul> 
+            <li>
+				<a href="index.html">Game Concept</a>
+				<ul>
+                    <li><a href="index.html#Intro">Introduction</a></li>
+                    <li><a href="index.html#Desc">Description</a></li>
+                </ul>
+			</li>
+            <li>
+                <a href="story.html">Story</a>
+                <ul>
+                    <li><a href="story.html#Story">The incident</a></li>
+                    <li><a href="story.html#Setting">Setting</a></li>
+                </ul>
+            </li>
+			<li class="current">
+                <a href="costAnalysis.html">Cost Analysis</a>
+                <ul>
+                    <li><a href="playerInterface.html">Player Interface</a></li>
+					<li><a href="visualArt.html">Visual Art</a></li>
+					<li><a href="soundsAndMusic.html">Sounds and Music</a></li>
+					<li><a href="technicalAnalysis.html">Technical Analysis</a></li>
+					<li><a href="marketAnalysis.html">Market Analysis</a></li>
+					<li><a href="gameMechanics.html">Game Mechanics</a></li>
+                </ul>
+            </li>
+			
+			
+        </ul>
+    </nav> <!-- #nav -->
+    
+    <!-- Show a "Please Upgrade" box to both IE7 and IE6 users (Edit to IE 6 if you just want to show it to IE6 users) - jQuery will load the content from js/ie.html into the div -->
+    
+    <!--[if lte IE 7]>
+        <div class="ie warning"></div>
+    <![endif]-->
+    
+    <div id="content" role="main">
+    
+        <article class="post">
+        
+            <h2 class="entry-title" id="resourceCost">Resource Cost</h2>
+            
+            <div class="entry-content">
+                <p></p>
+				<h4 class="entry-title" id="DevTeam">Development Team</h4>
+				<div class="entry-content" id="caDevTeam" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<table summary="Development Team" style="margin: 0px 0px 0px -20px;">
+						<caption>Development Team</caption>				
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Position</th>
+								<th>Annual Salary</th>
+								<th>Months</th>
+								<th>Cost</th>								
+							</tr>
+						</thead>				
+						<tfoot>
+							<tr>
+								<td>Grand Total Cost</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>$N/Ak</td>
+							</tr>
+						</tfoot> 
+						
+						<tbody>
+							<tr>
+								<td>N/A</td>
+								<td>Tech & Art Director </td>
+								<td>$N/Ak</td>
+								<td>N/A</td>						
+								<td>$N/Ak</td>								
+							</tr>
+							<tr>
+								<td>N/A</td>
+								<td>Producer/ Designer</td>
+								<td>$N/Ak</td>
+								<td>N/A</td>						
+								<td>$N/Ak</td>								
+							</tr>							
+							<tr>
+								<td>N/A</td>
+								<td>Product Manager/ Lead Tester</td>
+								<td>$N/Ak</td>
+								<td>N/A</td>						
+								<td>$N/Ak</td>								
+							</tr>
+						</tbody>
+					</table>
+				</div>   
+				<p></p>
+                <h4 class="entry-title" id="Hardware">Hardware</h4>
+				<div class="entry-content" id="caHardware" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<table summary="Hardware" style="margin: 0px 0px 0px -20px;" >				
+						<caption>Hardware</caption>				
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Number</th>
+								<th>Cost</th>
+								<th>Combined</th>							
+							</tr>
+						</thead>				
+						<tfoot>
+							<tr>
+								<td>Total Cost</td>
+								<td></td>
+								<td></td>
+								<td>$N/A</td>
+							</tr>
+						</tfoot> 
+						
+						<tbody>
+							<tr>
+								<td>Workstation</td>
+								<td>3</td>
+								<td>$N/A</td>						
+								<td>$N/A</td>								
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+				<p></p>
+                <h4 class="entry-title" id="Software">Software</h4>
+				<div class="entry-content" id="caSpftware" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<table summary="Software" style="margin: 0px 0px 0px -20px;">				
+						<caption>Software</caption>				
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Number</th>
+								<th>Cost</th>
+								<th>Combined</th>							
+							</tr>
+						</thead>				
+						<tfoot>
+							<tr>
+								<td>Total Cost</td>
+								<td></td>
+								<td></td>
+								<td>$N/A</td>
+							</tr>
+						</tfoot> 
+						
+						<tbody>
+							<tr>
+								<td>Unity 3D</td>
+								<td>?</td>
+								<td>$N/A</td>						
+								<td>$N/A</td>								
+							</tr>
+							<tr>
+								<td>3DS Max</td>
+								<td>?</td>
+								<td>$N/A</td>						
+								<td>$N/A</td>								
+							</tr>
+						</tbody>
+					</table>
+				</div>
+            </div> <!-- .entry-content -->       
+        </article> <!-- .post 1 -->
+        
+        <hr /> <!-- Post seperator - Not the most optimal solution -->
+		<article class="post">        
+            <h2 class="entry-title" id="RevProj">Revenue Projection</h2>            
+            <div class="entry-content">
+                <p></p>
+				<h4 class="entry-title" id="Sales">Sales</h4>
+				<div class="entry-content" id="caSales" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>As a first person action shooter this game targets a large portion of the PC/Consol gaming market, and therefore suggest the mass market retail price of $49.99, with estimated sales of 150,000 units.</p>
+				</div> 
+                <p></p>
+				<h4 class="entry-title" id="Proj">Projections</h4>
+				<div class="entry-content" id="caProjections" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<table summary="Projections" style="margin: 0px 0px 0px -20px;">				
+						<caption>Projections</caption>				
+						<thead>
+							<tr>
+								<th>Assumptions</th>
+								<th>Value</th>						
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Sales</td>
+								<td>$150,000</td>							
+							</tr>
+							<tr>
+								<td>Development cost</td>
+								<td>$N/A</td>							
+							</tr>
+							<tr>
+								<td>Additional cost to publisher</td>
+								<td>$500,000</td>							
+							</tr>
+							<tr>
+								<td>Publisher revenue per unit</td>
+								<td>$40</td>							
+							</tr>
+							<tr>
+								<td>Developer royalties per unit</td>
+								<td>$3</td>							
+							</tr>
+						</tbody>
+						<tr>
+								<td></td>
+								<td></td>
+							</tr>
+						<thead>
+							<tr>
+								<th>Revenue Projection</th>
+								<th>Value</th>						
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+						</tfoot>
+						<tbody>
+							<tr>
+								<td>Total publisher revenue</td>
+								<td>$6,000,000</td>							
+							</tr>
+							<tr>
+								<td>Breakeven units</td>
+								<td>15,174</td>							
+							</tr>
+							<tr>
+								<td>Royalties due</td>
+								<td>$404,479</td>							
+							</tr>
+							<tr>
+								<td>Total publisher profit</td>
+								<td>$4,988,579</td>							
+							</tr>
+							<tr>
+								<td>Sales</td>
+								<td>150,000</td>							
+							</tr>
+							<tr>
+								<td>Development cost</td>
+								<td>$106,942</td>							
+							</tr>
+							<tr>
+								<td>Additional cost to publisher</td>
+								<td>$500,000</td>							
+							</tr>
+						</tbody>
+					</table>
+				</div>
+            </div> <!-- .entry-content -->       
+        </article> <!-- .post 2 -->
+		<hr /> <!-- Post seperator - Not the most optimal solution -->
+		<div><a onclick="clearLocal(); getMyContact();" href="javascript:void(0);">Clear All Of My Data</a></div>
+    </div> <!-- #content -->
+    
+    <aside id="sidebar" role="complementary">
+    
+        <aside class="widget">
+            <h3>Quick Links</h3>
+            
+            <ul>
+                <li>
+					<a href="#resourceCost">Resource Cost</a>
+					<ul>
+						<li><a href="#DevTeam">Development Team</a></li>
+						<li><a href="#Hardware">Hardware</a></li>
+						<li><a href="#Software">Software</a></li>
+					</ul>
+				</li>
+                <li>
+					<a href="#RevProj">Revenue Projection</a>
+					<ul>
+						<li><a href="#Sales">Sales</a></li>
+						<li><a href="#Proj">Projections</a></li>
+					</ul>
+				</li>
+            </ul>
+        </aside> <!-- .widget -->
+        
+       
+    </aside> <!-- #sidebar -->
+    
+</div> <!-- #main -->
+    
+    <footer id="footer">
+        <!-- You're free to remove the credit link to Jayj.dk in the footer, but please, please leave it there :) -->
+        <p>
+            Copyright &copy; 2011 <a href="#">Death Event</a>
+            <span class="sep">|</span>
+        </p>
+    </footer> <!-- #footer -->
+    
+    <div class="clear"></div>
+
+</div> <!-- #wrapper -->
+
+	<!-- JavaScript at the bottom for fast page loading -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+	<script>
+	  getMyCostAnalysis();
+	</script>
+</body>
+</html>

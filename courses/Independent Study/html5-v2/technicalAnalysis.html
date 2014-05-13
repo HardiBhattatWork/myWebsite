@@ -1,0 +1,368 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8" />
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title></title>
+
+    <meta name="description" content="" />
+    
+     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="style.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold" rel="stylesheet" /> <!-- Load Droid Serif from Google Fonts -->
+    
+    <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+    	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries -->
+    <script src="js/modernizr-1.7.min.js"></script>
+    <script src="js/respond.min.js"></script>
+	<script>   
+		var db = null;
+		function html5_storage_support() {
+			try {
+				return 'localStorage' in window && window['localStorage'] == null;
+			} catch (e) {
+				return false;
+			}
+		}
+		//CHECK TO SEE IF THE BROWSER IS COMPATIBLE 
+		if (!html5_storage_support) {
+			alert("This Might Be a Good Time to Upgrade Your Browser or Turn On Jeavascript");
+		} else {
+		  
+			//OPEN AND OR CREATE THE DATABASE ON THE USERS MACHINE
+			db = openDatabase("MyGameIntro", "", "My Technical Analysis", 100000);
+		  
+			function storeMyContact(id) {
+				var ta3D = document.getElementById('ta3D').innerHTML;
+				var taNetworked = document.getElementById('taNetworked').innerHTML;
+				var taMassWrld = document.getElementById('taMassWrld').innerHTML;
+				var taAI = document.getElementById('taAI').innerHTML;
+				var taEditor = document.getElementById('taEditor').innerHTML;
+				var taFirstPlyrRew = document.getElementById('taFirstPlyrRew').innerHTML;
+				var ta3DRisks = document.getElementById('ta3DRisks').innerHTML;
+				var taAIRisks = document.getElementById('taAIRisks').innerHTML;
+				var taNetworkRisks = document.getElementById('taNetworkRisks').innerHTML;
+				var taTimeRisks = document.getElementById('taTimeRisks').innerHTML;
+				var taFirstPlyble = document.getElementById('taFirstPlyble').innerHTML;
+				var taAlpha = document.getElementById('taAlpha').innerHTML;
+				var taBeta = document.getElementById('taBeta').innerHTML;
+				var taGold = document.getElementById('taGold').innerHTML;
+				
+				localStorage.setItem('TA3D',ta3D);
+				localStorage.setItem('TANetworked',taNetworked);
+				localStorage.setItem('TAMassWrld',taMassWrld);
+				localStorage.setItem('TAAI',taAI);
+				localStorage.setItem('TAEditor',taEditor);
+				localStorage.setItem('TAFirstPlyrRew',taFirstPlyrRew);
+				localStorage.setItem('TA3DRisks',ta3DRisks);
+				localStorage.setItem('TAAIRisks',taAIRisks);
+				localStorage.setItem('TANetworkRisks',taNetworkRisks);
+				localStorage.setItem('TATimeRisks',taTimeRisks);
+				localStorage.setItem('TAFirstPlyble',taFirstPlyble);
+				localStorage.setItem('TAAlpha',taAlpha);
+				localStorage.setItem('TABeta',taBeta);
+				localStorage.setItem('TAGold',taGold);
+				
+			}
+			//GET STORED VALUES FROM KEYS TO DEFINE JAVASCRIPT VALUES OR DEFINE IF THEY DO NOT EXIST
+			function getMyTechAnalysis() {
+				if ( localStorage.getItem('TA3D')) {
+					var ta3D = localStorage.getItem('TA3D');
+					var taNetworked = localStorage.getItem('TANetworked');
+					var taMassWrld = localStorage.getItem('TAMassWrld');
+					var taAI = localStorage.getItem('TAAI');
+					var taEditor = localStorage.getItem('TAEditor');
+					var taFirstPlyrRew = localStorage.getItem('TAFirstPlyrRew');
+					var ta3DRisks = localStorage.getItem('TA3DRisks');
+					var taAIRisks = localStorage.getItem('TAAIRisks');
+					var taNetworkRisks = localStorage.getItem('TANetworkRisks');
+					var taTimeRisks = localStorage.getItem('TATimeRisks');
+					var taFirstPlyble = localStorage.getItem('TAFirstPlyble');
+					var taAlpha = localStorage.getItem('TAAlpha');
+					var taBeta = localStorage.getItem('TABeta');
+					var taGold = localStorage.getItem('TAGold');
+					
+				}
+				else {
+					var ta3D = document.getElementById('ta3D').innerHTML;
+					var taNetworked = document.getElementById('taNetworked').innerHTML;
+					var taMassWrld = document.getElementById('taMassWrld').innerHTML;
+					var taAI = document.getElementById('taAI').innerHTML;
+					var taEditor = document.getElementById('taEditor').innerHTML;
+					var taFirstPlyrRew = document.getElementById('taFirstPlyrRew').innerHTML;
+					var ta3DRisks = document.getElementById('ta3DRisks').innerHTML;
+					var taAIRisks = document.getElementById('taAIRisks').innerHTML;
+					var taNetworkRisks = document.getElementById('taNetworkRisks').innerHTML;
+					var taTimeRisks = document.getElementById('taTimeRisks').innerHTML;
+					var taFirstPlyble = document.getElementById('taFirstPlyble').innerHTML;
+					var taAlpha = document.getElementById('taAlpha').innerHTML;
+					var taBeta = document.getElementById('taBeta').innerHTML;
+					var taGold = document.getElementById('taGold').innerHTML;
+					
+				}
+				document.getElementById('ta3D').innerHTML = ta3D;
+				document.getElementById('taNetworked').innerHTML = taNetworked;
+				document.getElementById('taMassWrld').innerHTML = taMassWrld;
+				document.getElementById('taAI').innerHTML = taAI;
+				document.getElementById('taEditor').innerHTML = taEditor;
+				document.getElementById('taFirstPlyrRew').innerHTML = taFirstPlyrRew;
+				document.getElementById('ta3DRisks').innerHTML = ta3DRisks;
+				document.getElementById('taAIRisks').innerHTML = taAIRisks;
+				document.getElementById('taNetworkRisks').innerHTML = taNetworkRisks;
+				document.getElementById('taTimeRisks').innerHTML = taTimeRisks;
+				document.getElementById('taFirstPlyble').innerHTML = taFirstPlyble;
+				document.getElementById('taAlpha').innerHTML = taAlpha;
+				document.getElementById('taBeta').innerHTML = taBeta;
+				document.getElementById('taGold').innerHTML = taGold;
+				
+			}
+			//CLEAR ALL DATA
+			function clearLocal() {
+				clear: localStorage.clear(); 
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header id="header" class="clearfix" role="banner">
+    
+        <hgroup>
+            <h1 id="site-title"><a href="index.html">Death Event</a></h1>
+            <h2 id="site-description">Game Design Document</h2>
+        </hgroup>
+    
+    </header> <!-- #header -->
+
+<div id="main" class="clearfix">
+
+	<!-- Navigation -->
+    <nav id="menu" class="clearfix" role="navigation">
+        <ul> 
+            <li>
+				<a href="index.html">Game Concept</a>
+				<ul>
+                    <li><a href="index.html#Intro">Introduction</a></li>
+                    <li><a href="index.html#Desc">Description</a></li>
+                </ul>
+			</li>
+            <li>
+                <a href="story.html">Story</a>
+                <ul>
+                    <li><a href="story.html#Story">The incident</a></li>
+                    <li><a href="story.html#Setting">Setting</a></li>
+                </ul>
+            </li>
+			<li class="current">
+                <a href="technicalAnalysis.html">Technical Analysis</a>
+                <ul>
+                    <li><a href="playerInterface.html">Player Interface</a></li>
+					<li><a href="visualArt.html">Visual Art</a></li>
+					<li><a href="soundsAndMusic.html">Sounds and Music</a></li>
+					<li><a href="gameMechanics.html">Game Mechanics</a></li>
+					<li><a href="marketAnalysis.html">Market Analysis</a></li>
+					<li><a href="costAnalysis.html">Cost Analysis</a></li>
+                </ul>
+            </li>
+			
+			
+        </ul>
+    </nav> <!-- #nav -->
+    
+    <!-- Show a "Please Upgrade" box to both IE7 and IE6 users (Edit to IE 6 if you just want to show it to IE6 users) - jQuery will load the content from js/ie.html into the div -->
+    
+    <!--[if lte IE 7]>
+        <div class="ie warning"></div>
+    <![endif]-->
+    
+    <div id="content" role="main">
+    
+        <article class="post">        
+            <h2 class="entry-title" id="ExpFet">Experimental Features</h2>            
+            <div class="entry-content">
+                <p></p>
+				<h4 class="entry-title">3D</h4>
+				<div class="entry-content" id="ta3D" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+                <p></p>
+				<h4 class="entry-title">Networked</h4>
+				<div class="entry-content" id="taNetworked" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+				<p></p>
+				<h4 class="entry-title" >Massive worlds</h4>
+				<div class="entry-content" id="taMassWrld" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+				<h4 class="entry-title">Artificial Intelligence</h4>
+				<div class="entry-content" id="taAI" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+				
+            </div> <!-- .entry-content -->       
+        </article> <!-- .post 1 -->
+        
+        <hr /> <!-- Post seperator - Not the most optimal solution -->
+		<article class="post">        
+            <h2 class="entry-title" id="MajorDevTasks">Major Development Tasks</h2>            
+            <div class="entry-content">
+                <p></p>
+				<h4 class="entry-title" id="editor">Editor</h4>
+				<div class="entry-content" id="taEditor" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>The editor will be where most of the time is spent on this game during development. The editor features 4 different editing features.</p>
+					<ul> 
+						<li>Terrain Editor</li>
+						<li>Animation, Modeling, Particle Effects Editor/Viewer</li>
+						<li>User Interface Resource Editor</li>
+						<li>Font Pack Editor and Builder</li>
+					</ul>
+				</div> 
+                <p></p>
+				<h4 class="entry-title" id="FirstPlyrRew">First Playable Requirements</h4>
+				<div class="entry-content" id="taFirstPlyrRew" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>The first playable game should include</p>
+					<ul> 
+						<li>Art development</li>
+						<li>3D graphics engine optimization</li>
+						<li>User Interface Resource creation</li>
+						<li>Terrain Creation</li>
+						<li>AI implementation</li>
+						<li>Combat implementation</li>
+						<li>Physics implementation</li>
+					</ul>
+				</div> 
+            </div> <!-- .entry-content -->       
+        </article> <!-- .post 2 -->
+		<hr /> <!-- Post seperator - Not the most optimal solution -->
+		<article class="post">        
+            <h2 class="entry-title" id="Risks">Risks</h2>            
+            <div class="entry-content">
+                <p></p>
+				<h4 class="entry-title" id="3DRisks">3D</h4>
+				<div class="entry-content" id="ta3DRisks" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+                <p></p>
+				<h4 class="entry-title" id="AIRisks">AI</h4>
+				<div class="entry-content" id="taAIRisks" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+				<p></p>
+				<h4 class="entry-title" id="NetworkRisks">Network</h4>
+				<div class="entry-content" id="taNetworkRisks" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+				<p></p>
+				<h4 class="entry-title" id="TimeRisks">Time</h4>
+				<div class="entry-content" id="taTimeRisks" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<p>Description: </p>
+				</div> 
+            </div> <!-- .entry-content -->       
+        </article> <!-- .post 2 -->
+		
+		<hr /> <!-- Post seperator - Not the most optimal solution -->
+		<article class="post">        
+            <h2 class="entry-title" id="EstmSchedule">Estimated Schedule</h2>            
+            <div class="entry-content">
+                <p></p>
+				<h4 class="entry-title" id="FirstPlyble">First Playable: ?</h4>
+				<div class="entry-content" id="taFirstPlyble" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul> 
+						<li>Graphics Engine: 70%</li>
+						<li>Physics Engine: 40%</li>
+						<li>Networking: 50%</li>
+						<li>AI Engine: 30%</li>
+						<li>UI Engine: 30%</li>
+					</ul>
+				</div> 
+                <p></p>
+				<h4 class="entry-title" id="Alpha">Alpha</h4>
+				<div class="entry-content" id="taAlpha" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul> 
+						<li>Graphics Engine: 95%</li>
+						<li>Physics Engine: 90%</li>
+						<li>Networking: 90%</li>
+						<li>AI Engine: 80%</li>
+						<li>UI Engine: 80%</li>
+					</ul>
+				</div> 
+				<p></p>
+				<h4 class="entry-title" id="Beta">Beta</h4>
+				<div class="entry-content" id="taBeta" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul> 
+						<li>Graphics Engine: 100%</li>
+						<li>Physics Engine: 100%</li>
+						<li>Networking: 100%</li>
+						<li>AI Engine: 100%</li>
+						<li>UI Engine: 100%</li>
+					</ul>
+				</div> 
+				<p></p>
+				<h4 class="entry-title" id="Gold">Gold</h4>
+				<div class="entry-content" id="taGold" contenteditable="true" onkeyup="storeMyContact(this.id)">
+					<ul> 
+						<li>Graphics Engine: 110%</li>
+						<li>Physics Engine: 110%</li>
+						<li>Networking: 110%</li>
+						<li>AI Engine: 110%</li>
+						<li>UI Engine: 110%</li>
+					</ul>
+				</div> 
+            </div> <!-- .entry-content -->       
+        </article> <!-- .post 2 -->
+		<hr /> <!-- Post seperator - Not the most optimal solution -->
+		<div><a onclick="clearLocal(); getMyContact();" href="javascript:void(0);">Clear All Of My Data</a></div>
+    </div> <!-- #content -->
+    
+    <aside id="sidebar" role="complementary">
+    
+        <aside class="widget">
+            <h3>Quick Links</h3>
+            
+            <ul>
+                <li><a href="#ExpFet">Experimental Features</a></li>
+                <li><a href="#MajorDevTasks">Major Development Tasks</a></li>
+				<li><a href="#Risks">Risks</a></li>
+				<li><a href="#EstmSchedule">Estimated Schedule</a></li>
+            </ul>
+        </aside> <!-- .widget -->
+        
+       
+    </aside> <!-- #sidebar -->
+    
+</div> <!-- #main -->
+    
+    <footer id="footer">
+        <!-- You're free to remove the credit link to Jayj.dk in the footer, but please, please leave it there :) -->
+        <p>
+            Copyright &copy; 2011 <a href="#">Death Event</a>
+            <span class="sep">|</span>
+        </p>
+    </footer> <!-- #footer -->
+    
+    <div class="clear"></div>
+
+</div> <!-- #wrapper -->
+
+	<!-- JavaScript at the bottom for fast page loading -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+	<script>
+	  getMyTechAnalysis();
+	</script>
+</body>
+</html>

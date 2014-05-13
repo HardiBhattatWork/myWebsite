@@ -1,0 +1,85 @@
+/**
+ * This class is used to display local and remote files
+ * on FTP client GUI
+ * @author: Hardi and Jing Zhao 
+ **/
+package ftp.gui;
+
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.io.IOException;
+import java.sql.Timestamp;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ActionMap;
+import javax.swing.DefaultListModel;
+import javax.swing.DropMode;
+import javax.swing.JComponent;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.TransferHandler;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import ftp.listener.TableRowTransferHandler;
+
+public class FileTable extends JTable implements ActionListener {
+
+	private DefaultListModel model = new DefaultListModel();
+	private int count = 0;
+
+	// private JTable table;
+
+	public FileTable(final TableModel model) {
+		super(model);
+		System.out.println(model);
+		this.setModel(model);
+		this.setDragEnabled(true);
+		this.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		this.setDropMode(DropMode.INSERT_ROWS);
+		this.setDragEnabled(true);
+		this.setTransferHandler(new TableRowTransferHandler());
+		this.setFillsViewportHeight(true);
+		ActionMap map = this.getActionMap();
+        AbstractAction dummy = new AbstractAction() {
+            @Override public void actionPerformed(java.awt.event.ActionEvent e) {}
+        };
+        map.put(TransferHandler.getCutAction().getValue(Action.NAME),   dummy);
+        map.put(TransferHandler.getCopyAction().getValue(Action.NAME),  dummy);
+        map.put(TransferHandler.getPasteAction().getValue(Action.NAME), dummy);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public String getToolTipText(MouseEvent e) {
+		String tip = null;
+		Point point = e.getPoint();
+		int rowIndex = rowAtPoint(point);
+		int colIndex = columnAtPoint(point);
+		int realColumnIndex = convertColumnIndexToModel(colIndex);
+		TableModel model = getModel();
+		if (realColumnIndex == 2)
+			tip = ((Integer) model.getValueAt(rowIndex, colIndex)).toString();
+		else if (realColumnIndex == 4)
+			tip = ((Timestamp) model.getValueAt(rowIndex, colIndex)).toString();
+		else
+			tip = (String) model.getValueAt(rowIndex, colIndex);
+
+		return tip;
+
+	}
+
+}
