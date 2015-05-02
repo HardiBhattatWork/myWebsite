@@ -1,7 +1,11 @@
 {
   "name": "route",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+      "node-sass" : "~2.0.1",
+      "grunt-sass" : "~0.18.0",
+      "private": true
+    },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
@@ -35,5 +39,11 @@
   },
   "scripts": {
     "test": "grunt test"
-  }
+  },
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
 }
