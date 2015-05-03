@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name routeApp.controller:HeaderCtrl
+ * @name myWebsiteApp.controller:ContactCtrl
  * @description
- * # HeaderCtrl
- * Controller of the routeApp
+ * # ContactCtrl
+ * Controller of the myWebsiteApp
  */
 angular.module('myWebsiteApp')
-  .controller('HeaderCtrl', function ($scope) {
+  .controller('ContactCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

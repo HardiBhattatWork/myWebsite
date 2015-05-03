@@ -7,7 +7,7 @@
  * # FooterCtrl
  * Controller of the routeApp
  */
-angular.module('routeApp')
+angular.module('myWebsiteApp')
   .controller('FooterCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

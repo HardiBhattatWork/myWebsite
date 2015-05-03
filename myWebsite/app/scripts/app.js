@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name myWebsiteApp
+ * @name routeApp
  * @description
- * # myWebsiteApp
+ * # routeApp
  *
  * Main module of the application.
  */
@@ -23,21 +23,21 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/work', {
+        templateUrl: 'views/work.html',
+        controller: 'WorkCtrl'
       })
-      .when('/header', {
-        templateUrl: 'views/header.html',
-        controller: 'HeaderCtrl'
-      })
-      .when('/footer', {
-        templateUrl: 'views/footer.html',
-        controller: 'FooterCtrl'
+      .when('/resume', {
+        templateUrl: 'views/resume.html',
+        controller: 'ResumeCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl'
       })
       .otherwise({
         redirectTo: '/'
