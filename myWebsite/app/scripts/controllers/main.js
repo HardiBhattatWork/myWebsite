@@ -32,7 +32,7 @@ angular.module('myWebsiteApp')
     $scope.nextSlide = function () {
         $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
     };
-  /*})
+  })
   .animation('.slide-animation', function () {
         return {
             addClass: function (element, className, done) {
@@ -54,5 +54,5 @@ angular.module('myWebsiteApp')
                     done();
                 }
             }
-        };*/
+        };
     });
