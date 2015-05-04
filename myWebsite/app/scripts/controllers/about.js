@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name routeApp.controller:AboutCtrl
+ * @name myWebsiteApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the routeApp
+ * Controller of the myWebsiteApp
  */
 angular.module('myWebsiteApp')
   .controller('AboutCtrl', function ($scope) {
