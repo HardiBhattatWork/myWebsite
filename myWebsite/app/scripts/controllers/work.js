@@ -9,9 +9,7 @@
  */
 angular.module('myWebsiteApp')
   .controller('WorkCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    $scope.active = true;
+    $scope.active1 = true;
+    $scope.active2 = true;
   });
