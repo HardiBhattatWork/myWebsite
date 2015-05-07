@@ -8,7 +8,7 @@
  * Controller of the routeApp
  */
 angular.module('myWebsiteApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $location) {
     $scope.slides = [
             {image: 'images/slide1.jpg', description: 'Image 01'},
             {image: 'images/slide2.jpg', description: 'Image 02'},
@@ -32,6 +32,12 @@ angular.module('myWebsiteApp')
     $scope.nextSlide = function () {
         $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
     };
+
+    $scope.navClass = function (page) {
+        var currentRoute = $location.path().substring(1) || 'home';
+        return page === currentRoute ? 'active' : '';
+    };        
+
   })
   /*.animation('.slide-animation', function () {
         return {
