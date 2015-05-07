@@ -33,7 +33,7 @@ angular.module('myWebsiteApp')
         $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
     };
   })
-  .animation('.slide-animation', function () {
+  /*.animation('.slide-animation', function () {
         return {
             addClass: function (element, className, done) {
                 if (className == 'ng-hide') {
@@ -56,3 +56,4 @@ angular.module('myWebsiteApp')
             }
         };
     });
+*/

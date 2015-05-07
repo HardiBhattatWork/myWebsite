@@ -2,6 +2,7 @@
 ## Eclipse
 #################
 
+*.DS_Store
 .metadata
 ~$ReadMe.docx
 ~$ReadMe.doc
