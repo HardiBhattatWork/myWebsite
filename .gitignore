@@ -2,12 +2,18 @@
 ## Eclipse
 #################
 
+# Ignore Mac DS_Store files
+.DS_Store
 *.DS_Store
+**/.DS_Store
+.DS\_Store
+*.sw?
 .metadata
 ~$ReadMe.docx
 ~$ReadMe.doc
 ~WRL0003.tmp
 myWebsite/.settings
+#Ignoring large files.
 Sandbox/oldWebsite/doc/content/GameExe_UIExample.rar
 Sandbox/oldWebsite/doc/content/GameExe_Torque.rar
 Sandbox/oldWebsite/doc/content/Videos/ComputerAnimationIIFinal.mov
