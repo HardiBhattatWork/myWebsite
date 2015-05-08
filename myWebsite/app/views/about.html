@@ -1,33 +1,76 @@
 <div ng-controller="AboutCtrl">
-    <div class="container">
+  <h2>The Story of Hardi Bhatt! </h2> 
 
-      <div class="expandcollapse-item">
-        <div ng-click="active = !active" ng-class="{'expandcollapse-heading-collapsed': active, 'expandcollapse-heading-expanded': !active}">
-          <p>Driven</p></p>
-        </div>
-
-        <div class="slideDown" ng-hide="active">
-          <div class="expand-collapse-content">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-            on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-            raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </div>
-        </div>
-      </div>
-
-      <div class="expandcollapse-item">
-        <div ng-click="active1 = !active1" ng-class="{'expandcollapse-heading-collapsed': active1, 'expandcollapse-heading-expanded': !active1}">
-          <p>Passionate</p>
-        </div>
-
-        <div class="slideDown" ng-hide="active1">
-          <div class="expand-collapse-content">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-            on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-            raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <p>Hi I'm Hardi Bhatt. I'm a UI Developer, Tech Lead, Web Architect and just and over all energetic and friendly guy.</p>
+  <p>Currently, I am an employee of Farmers Insurance Group a U.S. insurer group of automobiles, homes and small businesses which also provides other insurance and financial services products.</p>
+  <p>When I'm not doing those things, I'm also volunteering at the PSPCA as a dog and cat photographer to help dogs and cats get adopted faster by increasing their visibility on the interned with the photographs I take and distribute.</p>
+   <p>Below are some the the quotes I live by.</p>
+    <button class="btn btn-default btn-sm" ng-click="addItem()">Add Quote</button>
+    <div ng-repeat="item in items">{{item}}</div>
+  </p>
+  <p>Below are my list of skills and my progress within those skills</p>
+  <h4>Java</h4>
+  <div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4>J2EE</h4>
+  <div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> C </h4>
+  <div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> C++ </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> C# </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> ASP.Net 3.5/4.0 </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> HTML 5</h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> CSS 3 </h4>
+  <div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> JavaScript </h4>
+ <div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div> 
+  <h4> Ajax </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4>AngularJS </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> NodeJS </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> YUI </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> JQuery </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> JSP </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> JSTL </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> SQL Server 07/08 </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> XML </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> XSLT/FO </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Action Script </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Torque Script </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Photoshop CS3/4 </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Maya </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Houdin </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Unity 3D </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> GitHub </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> SVN </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Grunt </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Bower </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Yeoman </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Karma </h4>
+<div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+  <h4> Jasmin</h4>
+  <div class="col-sm-4"><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
 </div>
