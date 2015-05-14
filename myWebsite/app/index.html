@@ -21,61 +21,62 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+    <div class="row">
+      <div class="header col-md-12">
+        <div class="navbar navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-header navbar-inverse navbar-fixed-top">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
 
-            <a class="navbar-brand" href="#/"><span>Hardi Bhatt</span> <small>A Creative Programmer</small></a>
-          </div>
+              
+            </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-             <ul class="nav navbar-nav">
-              <li ng-class="navClass('home')"><a href="#/">Home</a></li>
-              <li ng-class="navClass('work')"><a ng-href="#/work">Work</a></li>
-              <li ng-class="navClass('resume')"><a ng-href="#/resume">Resume</a></li>
-              <li ng-class="navClass('about')"><a ng-href="#/about">About</a></li>
-              <li ng-class="navClass('contact')"><a ng-href="#/contact">Contact</a></li>
-            </ul>
+            <div class="collapse navbar-header navbar-collapse navbar-inverse navbar-fixed-top" id="js-navbar-collapse">
+                <a class="navbar-brand pull-left" href="#/"><span>Hardi Bhatt</span> <small>A Creative Programmer</small></a>
+              <ul class="nav navbar-nav pull-right">
+                <li ng-class="navClass('home')"><a ng-href="#/">Home</a></li>
+                <li ng-class="navClass('work')"><a ng-href="#/work">Work</a></li>
+                <li ng-class="navClass('resume')"><a ng-href="#/resume">Resume</a></li>
+                <li ng-class="navClass('about')"><a ng-href="#/about">About</a></li>
+                <li ng-class="navClass('contact')"><a ng-href="#/contact">Contact</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="slider" ng-controller="MainCtrl">
-        <img ng-repeat="slide in slides" class="slide slide-animation"
-        ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
+      <div class="slider col-md-12" ng-controller="MainCtrl">
+          <img ng-repeat="slide in slides" class="slide slide-animation"
+          ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
 
-        <a class="arrow prev" href="#/" ng-click="nextSlide()"></a>
-        <a class="arrow next" href="#/" ng-click="prevSlide()"></a>
-        <nav class="slideNav">
-          <div class="wrapper">
-              <ul class="dots">
-                  <li class="dot" ng-repeat="slide in slides">
-                      <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                        ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
-              </ul>
-          </div>
-        </nav>
-    </div>
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p class="lf">&copy; Copyright 2015</p>
+          <a class="arrow prev" ng-click="nextSlide()"></a>
+          <a class="arrow next" ng-click="prevSlide()"></a>
+          <nav class="slideNav">
+            <div class="wrapper">
+                <ul class="dots">
+                    <li class="dot" ng-repeat="slide in slides">
+                        <a ng-class="{'active':isCurrentSlideIndex($index)}"
+                          ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
+                </ul>
+            </div>
+          </nav>
       </div>
+      <div class="container">
+      <div ng-view=""></div>
+      </div>
+
+      <div class="footer">
+        <div class="container">
+          <p class="lf">&copy; Copyright 2015</p>
+        </div>
+      </div>
+
     </div>
-
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){

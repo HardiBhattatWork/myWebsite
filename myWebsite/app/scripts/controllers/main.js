@@ -9,12 +9,17 @@
  */
 angular.module('myWebsiteApp')
   .controller('MainCtrl', function ($scope, $location) {
+    
     $scope.slides = [
             {image: 'images/slide1.jpg', description: 'Image 01'},
             {image: 'images/slide2.jpg', description: 'Image 02'},
             {image: 'images/slide3.jpg', description: 'Image 03'},
             {image: 'images/slide4.jpg', description: 'Image 04'}
     ];
+
+    $scope.go = function ( path ) {
+      console.log($location.path( path ));
+    };
 
     $scope.currentIndex = 0;
 

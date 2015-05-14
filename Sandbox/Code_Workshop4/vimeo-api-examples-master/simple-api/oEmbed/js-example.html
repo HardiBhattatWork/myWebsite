@@ -19,13 +19,13 @@
 		// This function puts the video on the page
 		function embedVideo(video) {
 			videoEmbedCode = video.html;
+			console.log(video);
 			document.getElementById('embed').innerHTML = unescape(video.html);
 		}
 		
 		// This function uses oEmbed to get the last clip
 		function latestVideo(videos) {
 			var videoUrl = videos[0].url;
-			
 			// Get the oEmbed stuff
 			loadScript(oEmbedUrl + '?url=' + encodeURIComponent(videoUrl) + '&callback=' + oEmbedCallback);
 		}
@@ -36,6 +36,7 @@
 			js.setAttribute('type', 'text/javascript');
 			js.setAttribute('src', url);
 			document.getElementsByTagName('head').item(0).appendChild(js);
+			console.log(js);
 		}
 		
 		// Call our init function when the page loads
