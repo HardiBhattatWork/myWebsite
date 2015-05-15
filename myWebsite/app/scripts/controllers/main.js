@@ -8,7 +8,18 @@
  * Controller of the routeApp
  */
 angular.module('myWebsiteApp')
-  .controller('MainCtrl', function ($scope, $location) {
+  .controller('MainCtrl', function ($scope, $location, propService) {
+    
+    propService.getDataProperty1().then(function(response){
+        $scope.mainHeader = response.data.mainHeader;
+        $scope.mainMessage = response.data.mainMessage;
+    });
+    
+    // propService.getDataExample2().then(function(response){
+    //     $scope.TestStringValue = response.data.TestString;
+    //     $scope.BooleanValue = response.data.BooleanValue;
+    //     console.log($scope.TestStringValue);
+    // });
     
     $scope.slides = [
             {image: 'images/slide1.jpg', description: 'Image 01'},
