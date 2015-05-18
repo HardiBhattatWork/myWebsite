@@ -1,34 +1,34 @@
 <div ng-controller="AboutCtrl">
-  <h2>The Story of Hardi Bhatt! </h2> 
+  <h2 ng-bind="aboutHeader"></h2> 
 
-  <p>Hi I'm Hardi Bhatt. I'm a UI Developer, Tech Lead, Web Architect and just and over all energetic and friendly guy.</p>
-  <p>Currently, I am an employee of Farmers Insurance Group a U.S. insurer group of automobiles, homes and small businesses which also provides other insurance and financial services products.</p>
-  <p>When I'm not doing those things, I'm also volunteering at the PSPCA as a dog and cat photographer to help dogs and cats get adopted faster by increasing their visibility on the interned with the photographs I take and distribute.</p>
-   <p>Below are some the the quotes I live by.</p>
-    <button class="btn btn-default btn-sm" ng-click="addItem()">Add Quote</button>
+  <p ng-bind="aboutMessage1"></p>
+  <p ng-bind="aboutMessage2"></p>
+  <p ng-bind="aboutMessage3"></p>
+  <p ng-bind="aboutMessage4"></p>
+    <button class="btn btn-default btn-sm" ng-click="addItem()" ng-bind="addQuote">Add Quote</button>
     <div ng-repeat="item in items">{{item}}</div>
   </p>
-  <p>Below are my list of skills and my progress within those skills</p>
+  <p ng-bind="aboutMessage5"></p>
 </div>
 <div class="container-fluid">
   <div class="row">
     
-    <div class="col-sm-4"><h4>Java</h4><progressbar class="progress-striped" value="60" type="warning">60%</progressbar></div>
-    <div class="col-sm-4"><h4>J2EE</h4><progressbar class="progress-striped" value="35" type="warning">35%</progressbar></div>
-    <div class="col-sm-4"><h4> C </h4><progressbar class="progress-striped" value="35" type="warning">35%</progressbar></div>
-    <div class="col-sm-4"><h4> C++ </h4><progressbar class="progress-striped" value="35" type="warning">35%</progressbar></div>
-    <div class="col-sm-4"><h4> C# </h4><progressbar class="progress-striped" value="55" type="warning">55%</progressbar></div>
-    <div class="col-sm-4"><h4> ASP.Net 3.5/4.0 </h4><progressbar class="progress-striped" value="65" type="warning">65%</progressbar></div>
-    <div class="col-sm-4"><h4> HTML 5</h4><progressbar class="progress-striped" value="95" type="warning">95%</progressbar></div>
-    <div class="col-sm-4"><h4> CSS 3 </h4><progressbar class="progress-striped" value="95" type="warning">95%</progressbar></div>
-    <div class="col-sm-4"><h4> JavaScript </h4><progressbar class="progress-striped" value="85" type="warning">85%</progressbar></div> 
-    <div class="col-sm-4"><h4> Ajax/JSON </h4><progressbar class="progress-striped" value="75" type="warning">75%</progressbar></div>
-    <div class="col-sm-4"><h4>AngularJS </h4><progressbar class="progress-striped" value="90" type="warning">90%</progressbar></div>
-    <div class="col-sm-4"><h4> NodeJS </h4><progressbar class="progress-striped" value="55" type="warning">55%</progressbar></div>
-    <div class="col-sm-4"><h4> YUI </h4><progressbar class="progress-striped" value="75" type="warning">75%</progressbar></div>
-    <div class="col-sm-4"><h4> JQuery </h4><progressbar class="progress-striped" value="85" type="warning">85%</progressbar></div>
-    <div class="col-sm-4"><h4> JSP/JSTL </h4><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
-    <div class="col-sm-4"><h4> SQL Server 07/08 </h4><progressbar class="progress-striped" value="25" type="warning">25%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="java"></h4><progressbar class="progress-striped" value="60" type="warning">60%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="j2ee"></h4><progressbar class="progress-striped" value="35" type="warning">35%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="c"></h4><progressbar class="progress-striped" value="35" type="warning">35%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="cPlusPlus"></h4><progressbar class="progress-striped" value="35" type="warning">35%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="cSharp"></h4><progressbar class="progress-striped" value="55" type="warning">55%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="aspNet"></h4><progressbar class="progress-striped" value="65" type="warning">65%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="html5"></h4><progressbar class="progress-striped" value="95" type="warning">95%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="css3"></h4><progressbar class="progress-striped" value="95" type="warning">95%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="javaScript"></h4><progressbar class="progress-striped" value="95" type="warning">95%</progressbar></div> 
+    <div class="col-sm-4"><h4 ng-bind="ajaxJSON"></h4><progressbar class="progress-striped" value="75" type="warning">75%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="angularJS"></h4><progressbar class="progress-striped" value="90" type="warning">90%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="nodeJS"></h4><progressbar class="progress-striped" value="55" type="warning">55%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="yui"></h4><progressbar class="progress-striped" value="75" type="warning">75%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="jquery"></h4><progressbar class="progress-striped" value="85" type="warning">85%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="jspJstl"></h4><progressbar class="progress-striped" value="45" type="warning">45%</progressbar></div>
+    <div class="col-sm-4"><h4 ng-bind="sqlServer0708"></h4><progressbar class="progress-striped" value="25" type="warning">25%</progressbar></div>
     <div class="col-sm-4"><h4> XML/XSLT/FO </h4><progressbar class="progress-striped" value="25" type="warning">25%</progressbar></div>
     <div class="col-sm-4"><h4> Action Script </h4><progressbar class="progress-striped" value="75" type="warning">75%</progressbar></div>
     <div class="col-sm-4"><h4> Torque Script </h4><progressbar class="progress-striped" value="25" type="warning">25%</progressbar></div>

@@ -12,7 +12,9 @@ angular.module('myWebsiteApp')
     
     propService.getDataProperty1().then(function(response){
         $scope.mainHeader = response.data.mainHeader;
-        $scope.mainMessage = response.data.mainMessage;
+        $scope.mainMessage1 = response.data.mainMessage1;
+        $scope.mainMessage2 = response.data.mainMessage2;
+        $scope.mainMessage3 = response.data.mainMessage3;
     });
     
     // propService.getDataExample2().then(function(response){
