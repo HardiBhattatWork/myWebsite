@@ -35,7 +35,19 @@ angular.module('myWebsiteApp')
         $scope.jquery = response.data.jquery;
         $scope.jspJstl = response.data.jspJstl;
         $scope.sqlServer0708 = response.data.sqlServer0708;
-        
+        $scope.xmlxsltfo = response.data.xmlxsltfo;
+        $scope.actionScript = response.data.actionScript;
+        $scope.torqueScript = response.data.torqueScript;
+        $scope.photoshopCS3 = response.data.photoshopCS3;
+        $scope.maya = response.data.maya;
+        $scope.houdin = response.data.houdin;
+        $scope.unity3d = response.data.unity3d;
+        $scope.githubSVN = response.data.githubSVN;
+        $scope.grunt = response.data.grunt;
+        $scope.bower = response.data.bower;
+        $scope.yeoman = response.data.yeoman;
+        $scope.karma = response.data.karma;
+        $scope.jasmin = response.data.jasmin;
     });
 
   $scope.items = [
@@ -52,7 +64,7 @@ angular.module('myWebsiteApp')
     	$scope.items.push('People who are unable to motivate themselves must be content with mediocrity.');
     }
     else {
-    	$scope.items.push('More to come.' + newItemNo);
+    	$scope.items.push('More to come. Count: ' + newItemNo);
     }
   };
 });
