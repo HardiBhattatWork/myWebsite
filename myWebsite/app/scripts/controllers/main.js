@@ -8,7 +8,7 @@
  * Controller of the routeApp
  */
 angular.module('myWebsiteApp')
-  .controller('MainCtrl', function ($scope, $location, propService) {
+  .controller('MainCtrl', function ($scope, $routeParams, propService) {
     
     propService.getDataProperty1().then(function(response){
         $scope.mainHeader = response.data.mainHeader;
@@ -23,6 +23,7 @@ angular.module('myWebsiteApp')
     //     console.log($scope.TestStringValue);
     // });
     
+    console.log($routeParams);
     $scope.slides = [
             {image: 'images/slide1.jpg', description: 'Image 01'},
             {image: 'images/slide2.jpg', description: 'Image 02'},
