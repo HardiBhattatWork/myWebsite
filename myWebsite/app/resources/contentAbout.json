@@ -1,0 +1,42 @@
+[
+	{
+		"header": "The Story of Hardi Bhatt!",
+		"message1":"Hi I'm Hardi Bhatt. I'm a UI Developer, Tech Lead, Web Architect and just an over all energetic and friendly guy.",
+		"message2":"Currently, I am an employee of Farmers Insurance Group a U.S. insurer group of automobiles, homes and small businesses which also provides other insurance and financial services products.",
+		"message3": "When I'm not doing those things, I'm also volunteering at the PSPCA as a dog and cat photographer to help dogs and cats get adopted faster by increasing their visibility on the interned with the photographs I take and distribute.",
+		"message4":"Below are some the the quotes I live by.",
+		"message5":"Below are my list of skills and my progress within those skills",
+		"skills": {
+					"addQuote":"Add Quote",
+					"java":"Java",
+					"j2ee":"J2EE",
+					"c":"C",
+					"cPlusPlus":"C++",
+					"cSharp":"C#",
+					"aspNet":"ASP.Net 3.5/4.0",
+					"html5":"HTML 5",
+					"css3":"CSS 3",
+					"javaScript": "JavaScript",
+					"ajaxJSON":"Ajax/JSON",
+					"angularJS":"AngularJS",
+					"nodeJS":"NodeJS",
+					"yui":"YUI",
+					"jquery":"JQuery",
+					"jspJstl":"JSP/JSTL",
+					"sqlServer0708":"SQL Server 07/08",
+					"xmlxsltfo":"XML/XSLT/FO",
+					"actionScript":"Action Script",
+					"torqueScript":"Torque Script",
+					"photoshopCS3":"Photoshop CS3/4",
+					"maya":"Maya",
+					"houdin":"Houdin",
+					"unity3d":"Unity 3D",
+					"githubSVN":"GitHub/SVN",
+					"grunt":"Grunt",
+					"bower":"Bower",
+					"yeoman":"Yeoman",
+					"karma":"Karma",
+					"jasmin":"JSasmin"
+		}
+	}
+]

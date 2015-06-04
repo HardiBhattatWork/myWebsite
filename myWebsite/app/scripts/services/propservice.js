@@ -5,28 +5,27 @@
  * @name myWebsiteApp.propService
  * @description
  * # propService
- * Service in the myWebsiteApp.
+ * These are 2 ways of requesting http requests.
  */
 angular.module('myWebsiteApp')
   .service('propService', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     this.getDataProperty1 = function() {
-		    var promise = $http({
-		        method : 'GET',
-		        url : 'resources/web.properties'
-		    }).success(function(data, status, headers, config) {
-		        return data;
-		    });   
+	    var promise = $http({
+	        method : 'GET',
+	        url : 'resources/web.properties'
+	    }).success(function(data, status, headers, config) {
+	        return data;
+	    });   
 
-		    return promise; 
-		};
+	    return promise; 
+	};
 		
-		this.getDataProperty2 = function() {
-		    var promise = $http.get('resources/web.properties').success(function(data, status, headers, config) {
-		    	//console.log(promise);
-		        return data;
-		    });   
+	this.getDataProperty2 = function() {
+	    var promise = $http.get('resources/web.properties').success(function(data, status, headers, config) {
+	        return data;
+	    });   
 
-		    return promise; 
-		};
+	    return promise; 
+	};
   });

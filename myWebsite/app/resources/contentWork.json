@@ -1,0 +1,21 @@
+[
+	{
+		"gameHeader":"Game Samples",
+		"gameMessage":"Here you will find my work in games that I have worked on as a programmer. Additional information is provided when you click on the trailer video.",
+		"gameMessageLI1":"You will find videos from that of a game called EngineDEVINE in this game I was the Lead Programmer in charge of setting up the Artificial Intelligence framework for the enemy Boss, All the Particle emitted in the game and the audio in the game were programmed by me. I was also in charge of distributing work to other programmers in the team.",
+		"gameMessageLI2":"Video of a game called Maxwells Demon it is a 3D puzzle based game which utilizes the NeuroSky BCI technology to allow users to move objects within the game with their minds, through the use of the NeuroSky headset. In this game I was the tools programmer in charge of integrating the BCI device to the game engine and extract the attention and meditation data that is read in from the BCI device and get it set up to be used in the game engine.",
+		"gameMessageLI3":"Videos of work I have done in the Torque Game Engine to brush up on basic game programming methods and techniques.",
+		"gameMessageLI4":"Finally my senior project consisted of introducing array implementation into the Torque 3D game engine. Due to the fact that there was no such thing as arrays in the old Torque 3D SDK, for my senior project I dedicated my time to have array implementation available for future versions of the SDK. My method was later chosen to be part of the new build.",
+		"codeHeader":"Code Samples",
+		"codeMessage":"In the Computer Science section you will find my work in Artificial Intelligence, OpenGL graphics and Computer Vision.",
+		"codeMessageLI1":"In Artificial Intelligence, my work consisted of figuring out basic search algorithms using Breath-First, Depth-First and A*. Working on resolving basic puzzle problems I was able to successful complete the task by using unique techniques and detailed coding.",
+		"codeMessageLI2":"My OpenGL graphics work is also included in this collection in which I created both 2D and 3D graphics including a 3D environment in which you can control through input from the keyboard.",
+		"codeMessageLI3":"Many Shader texture images all written in the RenderMan Class Based shading language.",
+		"codeMessageLI4":"In addition I have included my Computer Vision work in which I am manipulate a binary and grayscale 2D image to detect abnormalities within the image, indicating the presence of cancer.",
+		"digitalHeader":"Digital Samples",
+		"digitalMessage":"In the Digital Media section you will find work I have done in Maya, Houdini, and in the Adobe CS3 kit in software like Flash CS3, Photoshop CS3, Dreamweaver CS3, After Effects CS3 and Director 11. Immediately entering the section you will find.",
+		"digitaMessageLI1":"Model work I have did in Maya using NURBS, Sub Divisions and Polygon modeling. Including a basketball scene in which all the textures are customized and applied to everything in the scene.",
+		"digitaMessageLI2":"In the Multimedia section you will find videos of my steady improvement in Animation and Modeling.",
+		"digitaMessageLI3":"Finally you will find the website that I have re-designed.",
+	}
+]
