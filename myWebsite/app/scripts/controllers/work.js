@@ -29,4 +29,12 @@ angular.module('myWebsiteApp')
   		$scope.workDigitaMessageLI3 = response.data.workDigitaMessageLI3;
 
   	});
+
+    $scope.oneAtATime = true;
+
+
+    $scope.status = {
+      isFirstOpen: true,
+      isFirstDisabled: false
+    };
   });

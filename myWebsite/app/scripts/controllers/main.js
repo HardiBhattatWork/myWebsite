@@ -23,7 +23,7 @@ angular.module('myWebsiteApp')
     //     console.log($scope.TestStringValue);
     // });
     
-    console.log($routeParams);
+    //console.log($routeParams);
     $scope.slides = [
             {image: 'images/slide1.jpg', description: 'Image 01'},
             {image: 'images/slide2.jpg', description: 'Image 02'},

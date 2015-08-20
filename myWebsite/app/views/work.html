@@ -1,51 +1,30 @@
 <div ng-controller="WorkCtrl">
-	<div class="container">
-		<div class="expandcollapse-item">
-			<div ng-click="active = !active" ng-class="">
-				<h4 ng-bind="workGameHeader"></h4>
-			</div>
-			<div class="slideDown">
-				<div class="expand-collapse-content">
-					<p><strong ng-bind="workGameMessage"></strong></p>
-					<ul>
-						<li ng-bind="workGameMessageLI1"></li>
-					    <li ng-bind="workGameMessageLI2"></li>
-					    <li ng-bind="workGameMessageLI3"></li>
-					    <li ng-bind="workGameMessageLI4"></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="expandcollapse-item">
-			<div ng-click="active1 = !active1" ng-class="">
-				<h4 ng-bind="workCodeHeader"></h4>
-			</div>
-			<div class="slideDown">
-				<div class="expand-collapse-content">
-					<p><strong ng-bind="workCodeMessage"></strong></p>
-					<ul>
-						<li ng-bind="workCodeMessageLI1"></li>
-						<li ng-bind="workCodeMessageLI2"></li>
-						<li ng-bind="workCodeMessageLI3"></li>
-					    <li ng-bind="workCodeMessageLI4"></li>
-					 </ul>
-				</div>
-			</div>
-		</div>
-		<div class="expandcollapse-item">
-			<div <div ng-click="active2 = !active2" ng-class="">
-				<h4 ng-bind="workDigitalHeader"></h4>
-			</div>
-			<div class="slideDown">
-				<div class="expand-collapse-content">
-					<p><strong ng-bind="workDigitalMessage"></strong></p>
-					<ul>
-						<li ng-bind="workDigitaMessageLI1"></li>
-					    <li ng-bind="workDigitaMessageLI2"></li>
-					    <li ng-bind="workDigitaMessageLI3"></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+	<accordion close-others="oneAtATime">
+	    <accordion-group heading="{{workGameHeader}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+	      	<p><strong ng-bind="workGameMessage"></strong></p>
+			<ul>
+				<li ng-bind="workGameMessageLI1"></li>
+			    <li ng-bind="workGameMessageLI2"></li>
+			    <li ng-bind="workGameMessageLI3"></li>
+			    <li ng-bind="workGameMessageLI4"></li>
+			</ul>
+	    </accordion-group>
+	    <accordion-group heading="{{workCodeHeader}}">
+	    	<p><strong ng-bind="workCodeMessage"></strong></p>
+			<ul>
+				<li ng-bind="workCodeMessageLI1"></li>
+				<li ng-bind="workCodeMessageLI2"></li>
+				<li ng-bind="workCodeMessageLI3"></li>
+			    <li ng-bind="workCodeMessageLI4"></li>
+			 </ul>
+	    </accordion-group>
+	    <accordion-group heading="{{workDigitalHeader}}">
+	    	<p><strong ng-bind="workDigitalMessage"></strong></p>
+			<ul>
+				<li ng-bind="workDigitaMessageLI1"></li>
+			    <li ng-bind="workDigitaMessageLI2"></li>
+			    <li ng-bind="workDigitaMessageLI3"></li>
+			</ul>
+	    </accordion-group>
+	</accordion>
 </div>
